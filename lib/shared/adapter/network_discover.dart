@@ -9,33 +9,26 @@ class NetworkDiscover {
       milliseconds: 200,
     ),
   }) async* {
-    final socketsConnections = <Future<SocketConnection>>[];
     for (int i = 1; i < 256; ++i) {
-      final host = i == 171 ? '0.0.0.0' : '$subnet.$i';
+      print('trying $subnet.$i');
+      final host = '$subnet.$i';
 
-      socketsConnections.add(
-        Socket.connect(host, port, timeout: timeout)
-            .then(
-              (value) => SocketConnection(
-                socket: value,
-                host: host,
-              ),
-            )
-            .onError(
-              (error, stackTrace) => SocketConnection(
-                socket: null,
-                host: host,
-              ),
-            ),
-      );
-    }
-    final sockets = await Future.wait(socketsConnections);
-    for (final socket in sockets) {
-      print('trying ${socket.host}');
-      if (socket.socket != null) {
-        yield NetworkAddress(socket.host, true);
-      } else {
-        yield NetworkAddress(socket.host, false);
+      try {
+        final Socket s = await Socket.connect(host, port, timeout: timeout);
+        s.destroy();
+        yield NetworkAddress(host, true);
+      } catch (e) {
+        if (e is! SocketException) {
+          rethrow;
+        }
+
+        // Check if connection timed out or we got one of predefined errors
+        if (e.osError == null || _errorCodes.contains(e.osError?.errorCode)) {
+          yield NetworkAddress(host, false);
+        } else {
+          // Error 23,24: Too many open files in system
+          rethrow;
+        }
       }
     }
   }
@@ -47,12 +40,6 @@ class NetworkDiscover {
   }
 
   static final _errorCodes = [13, 49, 61, 64, 65, 101, 111, 113];
-}
-
-class SocketConnection {
-  final Socket? socket;
-  final String host;
-  SocketConnection({required this.socket, required this.host});
 }
 
 class NetworkAddress {
