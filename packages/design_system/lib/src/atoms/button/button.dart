@@ -55,6 +55,41 @@ class Button extends StatelessWidget {
             ],
           ),
         );
+      case ButtonVariant.secondary:
+        return OutlinedButton(
+          onPressed: onPressed,
+          style: OutlinedButton.styleFrom(
+            side: BorderSide(
+              color: SurfaceColor.primaryPallete.shade800,
+              width: 2,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: Spacing.large,
+              vertical: Spacing.medium,
+            ),
+            minimumSize: Size(fill ? double.infinity : 0, 0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (icon != null) ...[
+                MyIcon(
+                  icon!,
+                ),
+                const SizedBox(
+                  width: Spacing.small,
+                )
+              ],
+              Text(
+                label,
+                style: MyTypography.p.copyWith(color: SurfaceColor.secondary),
+              ),
+            ],
+          ),
+        );
     }
   }
 }

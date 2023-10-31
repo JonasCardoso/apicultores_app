@@ -35,7 +35,7 @@ class AppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pop();
+                      Navigator.of(context).maybePop();
                     },
                     child: Container(
                       height: Spacing.xxxlarge,

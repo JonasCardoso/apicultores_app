@@ -1,5 +1,5 @@
+import 'package:apicultores_app/home/business_logic/bloc/bottom_navigation_bloc.dart';
 import 'package:apicultores_app/home/business_logic/entities/bottom_navigation_item_type.dart';
-import 'package:apicultores_app/home/presentation/bloc/bottom_navigation_bloc.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
