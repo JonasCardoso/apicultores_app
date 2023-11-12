@@ -11,4 +11,11 @@ class SaveDeviceUseCase {
   Future<void> sendBeeDeviceData(BeeDeviceEntity beeDeviceEntity) async {
     await _beeDeviceRepository.sendBeeDeviceData(beeDeviceEntity);
   }
+
+  Future<void> saveDeviceLocally(
+      {required BeeDeviceEntity beeDeviceEntity}) async {
+    await _beeDeviceRepository.saveDeviceLocally(
+      beeDeviceEntity: beeDeviceEntity,
+    );
+  }
 }

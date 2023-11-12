@@ -46,7 +46,7 @@ class FindNewDevicesSearchStopWidget extends StatelessWidget {
                                 child: Text(
                                   Strings
                                       .findNewDevicesListWidgetStopSearchLabel,
-                                  style: MyTypography.p,
+                                  style: MyTypography.captionRegular,
                                 ),
                               )
                             ],

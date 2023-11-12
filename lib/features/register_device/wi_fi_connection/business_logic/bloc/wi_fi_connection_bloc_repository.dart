@@ -3,12 +3,17 @@ import 'package:apicultores_app/features/register_device/wi_fi_connection/busine
 import 'package:apicultores_app/features/register_device/wi_fi_connection/data/data_sources/connectivity_data_source.dart';
 import 'package:apicultores_app/features/register_device/wi_fi_connection/data/data_sources/network_info_data_source.dart';
 import 'package:apicultores_app/features/register_device/wi_fi_connection/data/repositories/available_wi_fi_repository.dart';
+import 'package:apicultores_app/features/services/location_picker/data/data_sources/geolocator_data_source.dart';
+import 'package:apicultores_app/features/services/location_picker/data/repository/location_picker_repository.dart';
 
 class WiFiConnectionBlocRepository {
   static final WiFiConnectionBlocRepository instance =
       WiFiConnectionBlocRepository._(
     WiFiConnectionBloc(
       WiFiConnectionUseCase(
+        locationPickerRepository: LocationPickerRepository(
+          geolocatorDataSource: GeolocatorDataSource(),
+        ),
         availableWiFiRepository: AvailableWiFiRepository(
           connectivityDataSource: ConnectivityDataSource(),
           networkPlusDataSource: NetworkInfoDataSource(),

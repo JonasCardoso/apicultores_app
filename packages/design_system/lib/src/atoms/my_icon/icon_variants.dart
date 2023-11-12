@@ -5,6 +5,8 @@ enum IconSize {
   small,
   medium,
   large,
+  xlarge,
+  xxlarge,
   huge,
 }
 
@@ -19,6 +21,10 @@ extension _IconSizeInformation on IconSize {
         return 24;
       case IconSize.large:
         return 32;
+      case IconSize.xlarge:
+        return 48;
+      case IconSize.xxlarge:
+        return 64;
       case IconSize.huge:
         return 98;
     }

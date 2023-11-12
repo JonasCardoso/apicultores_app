@@ -43,3 +43,7 @@ final class WiFiConnectionSuccess extends WiFiConnectionState {
         wiFiName,
       ];
 }
+
+final class WiFiLocationNeedsPermission extends WiFiConnectionState {}
+
+final class WiFiLocationPermissionDeny extends WiFiConnectionState {}

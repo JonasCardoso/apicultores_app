@@ -10,7 +10,7 @@ class Strings {
       "Sentimos muito, mas não foi possível realizar a operação. Tente novamente mais tarde.";
   static const String errorFeedBackButtonLabel = "Tentar novamente";
 
-  static const String devicesScreenTitle = "Meus dispositivos";
+  static const String devicesScreenTitle = "Dispositivos";
   static const String devicesEmptyScreenTitle =
       "Você ainda não possui nenhum dispositivo cadastrado.";
   static const String devicesEmptyDescription =
@@ -144,4 +144,18 @@ class Strings {
   static const devicesSuccessDescription =
       "Estes são os dispositivos conectados a sua rede Wi-fi";
   static const devicesSuccessButton = "Procurar";
+  static const devicesLocalCardDisconnectedMessage = "Sem conexão";
+  static const devicesLocalCardEmptyMessage =
+      "Você ainda não possui dispositivos salvos. Clique no botão abaixo para cadastrar um novo dispositivo via Bluetooth.";
+  static const devicesLocalCardEmptyButton = "Cadastrar dispositivo";
+  static const savedDevices = "Dispositivos salvos";
+  static const foundDevices = "Dispositivos encontrados";
+
+  static const devicesInternetEmptyMessage =
+      "Não foi possível encontrar nenhum dispositivo na sua rede.";
+  static const devicesInternetEmptyButton = "Procurar novamente";
+
+  static const devicesInternetSearchMessage =
+      "Deseja encontrar dispositivos conectados a sua rede?";
+  static const devicesInternetSearchButton = "Procurar dispositivos";
 }

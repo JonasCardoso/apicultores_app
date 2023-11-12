@@ -22,6 +22,7 @@ class SaveDeviceBloc extends Bloc<SaveDeviceEvent, SaveDeviceState> {
     emit.call(SaveDeviceLoading());
     try {
       await _useCase.sendBeeDeviceData(event.beeDeviceEntity);
+      await _useCase.saveDeviceLocally(beeDeviceEntity: event.beeDeviceEntity);
       emit.call(SaveDeviceSuccess());
     } on Exception catch (e, stackTrace) {
       print('error: $e, stackTrace: $stackTrace');

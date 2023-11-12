@@ -29,7 +29,7 @@ class WiFiGuardWaitingWidget extends StatelessWidget {
               WiFiConnectionLoadingInformation _ =>
                 Strings.connectDeviceToInternetLoadingWifiTitle,
             },
-            style: MyTypography.p,
+            style: MyTypography.captionRegular,
           )
         ],
       ),

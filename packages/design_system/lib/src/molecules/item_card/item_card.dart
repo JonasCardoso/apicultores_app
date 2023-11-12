@@ -26,8 +26,20 @@ class ItemCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: backgroundColor ?? SurfaceColor.foregroundColor,
+          color: backgroundColor ??
+              (onTap != null
+                  ? SurfaceColor.foregroundColor
+                  : SurfaceColor.disabled),
           borderRadius: BorderRadius.circular(Spacing.small),
+          boxShadow: onTap != null
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 2,
+                    offset: const Offset(0, 4),
+                  ),
+                ]
+              : null,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -52,7 +64,7 @@ class ItemCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: MyTypography.p.copyWith(
+                        style: MyTypography.captionRegular.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),

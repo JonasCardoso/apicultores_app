@@ -42,7 +42,7 @@ class FeedBackBanner extends StatelessWidget {
           ),
           Text(
             description,
-            style: MyTypography.p,
+            style: MyTypography.captionRegular,
           ),
           const SizedBox(
             height: Spacing.medium,

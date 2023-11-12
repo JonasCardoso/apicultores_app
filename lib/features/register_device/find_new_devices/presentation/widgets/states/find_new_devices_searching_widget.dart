@@ -35,7 +35,7 @@ class FindNewDevicesSearchingWidget extends StatelessWidget {
                   ),
                   Text(
                     Strings.findNewDevicesListWidgetSearchingLabel,
-                    style: MyTypography.p,
+                    style: MyTypography.captionRegular,
                   )
                 ],
               ),

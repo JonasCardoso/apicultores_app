@@ -14,7 +14,7 @@ class DeviceBluetoothFeedBackLoading extends StatelessWidget {
           ),
           Text(
             "Conectando com o dispositivo...",
-            style: MyTypography.p,
+            style: MyTypography.captionRegular,
           ),
         ],
       ),

@@ -7,26 +7,13 @@ sealed class MyDevicesEvent extends Equatable {
   List<Object> get props => [];
 }
 
-final class MyDevicesFetched extends MyDevicesEvent {
-  const MyDevicesFetched();
-
-  @override
-  List<Object> get props => [];
+final class MyDevicesLocalFetched extends MyDevicesEvent {
+  const MyDevicesLocalFetched();
 }
 
-final class MyDevicesFound extends MyDevicesEvent {
-  final List<BeeDeviceEntity> devices;
-
-  const MyDevicesFound(this.devices);
-
-  @override
-  List<Object> get props => [devices];
-}
-
-final class MyDevicesFailed extends MyDevicesEvent {
-  const MyDevicesFailed();
-}
-
-final class MyDevicesFetchFinished extends MyDevicesEvent {
-  const MyDevicesFetchFinished();
+final class MyDevicesNewAdded extends MyDevicesEvent {
+  final BeeDeviceEntity device;
+  const MyDevicesNewAdded({
+    required this.device,
+  });
 }

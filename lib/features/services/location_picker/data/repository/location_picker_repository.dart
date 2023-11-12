@@ -11,6 +11,10 @@ class LocationPickerRepository {
     return await _geolocatorDataSource.isLocationServiceEnabled();
   }
 
+  Future<bool> isLocationPermitted() async {
+    return await _geolocatorDataSource.isLocationPermitted();
+  }
+
   Future<void> getCurrentPosition({
     required void Function(
       double latitude,

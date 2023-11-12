@@ -1,3 +1,4 @@
+import 'package:apicultores_app/features/devices/my_devices/business_logic/bloc/internet_devices_bloc.dart';
 import 'package:apicultores_app/features/devices/my_devices/business_logic/bloc/my_devices_bloc.dart';
 import 'package:apicultores_app/shared/strings.dart';
 import 'package:design_system/design_system.dart';
@@ -14,7 +15,7 @@ class DevicesSuccessSearchAgain extends StatelessWidget {
         Expanded(
           child: Text(
             Strings.devicesSuccessDescription,
-            style: MyTypography.p,
+            style: MyTypography.captionRegular,
           ),
         ),
         const SizedBox(
@@ -22,8 +23,11 @@ class DevicesSuccessSearchAgain extends StatelessWidget {
         ),
         Button(
             label: Strings.devicesSuccessButton,
+            variant: ButtonVariant.secondary,
             onPressed: () {
-              context.read<MyDevicesBloc>().add(const MyDevicesFetched());
+              context
+                  .read<InternetDevicesBloc>()
+                  .add(const InternetDevicesFetched());
             }),
       ],
     );

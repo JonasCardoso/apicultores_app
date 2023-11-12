@@ -31,7 +31,7 @@ class AvailableWiFiFeedBackWidget extends StatelessWidget {
         ),
         Text(
           Strings.connectDeviceToInternetWiFiAvailableSubtitle,
-          style: MyTypography.p,
+          style: MyTypography.captionRegular,
         ),
         const SizedBox(
           height: Spacing.large,

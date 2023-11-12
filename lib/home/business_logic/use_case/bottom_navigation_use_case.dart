@@ -12,7 +12,7 @@ class BottomNavigationUseCase {
         BottomNavigationItemType.story,
       ];
 
-  BottomNavigationItemType get currentTab => BottomNavigationItemType.devices;
+  BottomNavigationItemType get currentTab => _repository.currentTab;
 
   void selectTab(BottomNavigationItemType tab) {
     _repository.changeTab(tab);

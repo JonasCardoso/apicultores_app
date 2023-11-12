@@ -19,7 +19,7 @@ class DevicesSearchingSpinner extends StatelessWidget {
         Expanded(
           child: Text(
             Strings.devicesSearchingSpinner,
-            style: MyTypography.p,
+            style: MyTypography.captionRegular,
           ),
         ),
       ],

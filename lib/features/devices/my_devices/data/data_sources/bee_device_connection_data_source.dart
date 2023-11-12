@@ -46,24 +46,31 @@ class BeeDeviceConnectionDataSource {
       }
     }
   }
-}
 
-Future<BeeDeviceDTO> getDeviceData(String deviceIp) async {
-  final response = await http.get(
-    Uri.parse('http://$deviceIp/data'),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-  );
-  try {
-    final dto = BeeDeviceDTO.fromJson(jsonDecode(response.body));
-  } catch (e, stk) {
-    print(e);
-    print(stk);
+  Future<BeeDeviceDTO> getDeviceData(String deviceIp) async {
+    print("trying to connect to device");
+    final response = await http.get(
+      Uri.parse('http://$deviceIp/data'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    ).timeout(
+      const Duration(seconds: 1),
+      onTimeout: () {
+        return http.Response(
+            'Error', 408); // Request Timeout response status code
+      },
+    );
+    try {
+      final dto = BeeDeviceDTO.fromJson(jsonDecode(response.body));
+    } catch (e, stk) {
+      print(e);
+      print(stk);
+    }
+    print(response.body);
+    if (response.statusCode != 200) {
+      throw const BeeDeviceConnectionGetDataException();
+    }
+    return BeeDeviceDTO.fromJson(jsonDecode(response.body));
   }
-  print(response.body);
-  if (response.statusCode != 200) {
-    throw const BeeDeviceConnectionGetDataException();
-  }
-  return BeeDeviceDTO.fromJson(jsonDecode(response.body));
 }

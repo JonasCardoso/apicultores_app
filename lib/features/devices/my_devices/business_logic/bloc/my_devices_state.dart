@@ -7,21 +7,19 @@ sealed class MyDevicesState extends Equatable {
   List<Object> get props => [];
 }
 
-final class MyDevicesInitial extends MyDevicesState {}
+final class MyDevicesInitial extends MyDevicesState {
+  const MyDevicesInitial();
+}
 
-final class MyDevicesSearching extends MyDevicesState {
-  final List<BeeDeviceEntity> devices;
-
-  const MyDevicesSearching(this.devices);
-
-  @override
-  List<Object> get props => [devices];
+final class MyDevicesLoading extends MyDevicesState {
+  const MyDevicesLoading();
 }
 
 final class MyDevicesSuccess extends MyDevicesState {
-  final List<BeeDeviceEntity> devices;
-
-  const MyDevicesSuccess(this.devices);
+  final List<LocalBeeDeviceEntity> devices;
+  const MyDevicesSuccess({
+    required this.devices,
+  });
 
   @override
   List<Object> get props => [devices];
@@ -29,8 +27,4 @@ final class MyDevicesSuccess extends MyDevicesState {
 
 final class MyDevicesFailure extends MyDevicesState {
   const MyDevicesFailure();
-}
-
-final class MyDevicesEmpty extends MyDevicesState {
-  const MyDevicesEmpty();
 }

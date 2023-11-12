@@ -35,6 +35,17 @@ class GeolocatorDataSource {
     });
   }
 
+  Future<bool> isLocationPermitted() async {
+    if (await Geolocator.isLocationServiceEnabled() == false) return false;
+    return Geolocator.checkPermission().then((permission) {
+      if (permission == LocationPermission.always ||
+          permission == LocationPermission.whileInUse) {
+        return true;
+      }
+      return false;
+    });
+  }
+
   Future<bool> requestPermission() async {
     final permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.always ||

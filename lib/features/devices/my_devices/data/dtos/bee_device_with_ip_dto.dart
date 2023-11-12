@@ -10,6 +10,17 @@ class BeeDeviceWithIpDTO extends Equatable {
     required this.deviceIp,
   });
 
+  factory BeeDeviceWithIpDTO.fromJson(Map<String, dynamic> json) =>
+      BeeDeviceWithIpDTO(
+        beeDeviceDTO: BeeDeviceDTO.fromJson(json),
+        deviceIp: json['deviceIp'],
+      );
+
+  Map<String, dynamic> toJson() => {
+        ...beeDeviceDTO.toJson(),
+        'deviceIp': deviceIp,
+      };
+
   @override
   List<Object?> get props => [beeDeviceDTO, deviceIp];
 }

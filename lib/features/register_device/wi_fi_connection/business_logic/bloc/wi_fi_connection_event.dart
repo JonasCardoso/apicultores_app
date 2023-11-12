@@ -12,3 +12,7 @@ final class WiFiConnectionFetched extends WiFiConnectionEvent {}
 final class WiFiConnectionTurnedOn extends WiFiConnectionEvent {}
 
 final class WiFiConnectionTurnedOff extends WiFiConnectionEvent {}
+
+final class WiFiLocationSettingsOpened extends WiFiConnectionEvent {}
+
+final class WiFiLocationPermissionAsked extends WiFiConnectionEvent {}

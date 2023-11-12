@@ -17,7 +17,9 @@ class SaveDeviceSuccessWidget extends StatelessWidget {
       description: Strings.saveDeviceSuccessDescription,
       buttonLabel: Strings.saveDeviceSuccessButtonLabel,
       onButtonClick: () {
-        AppCompositionRoot().makeMyDevicesBloc().add(const MyDevicesFetched());
+        AppCompositionRoot()
+            .makeMyDevicesBloc()
+            .add(const MyDevicesLocalFetched());
         navigationDelegate.navigateToDevices();
       },
     );
