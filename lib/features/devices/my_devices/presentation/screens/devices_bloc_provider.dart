@@ -14,8 +14,7 @@ class DevicesBlocProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
       BlocProvider<MyDevicesBloc>.value(
-        value: AppCompositionRoot().makeMyDevicesBloc()
-          ..add(const MyDevicesLocalFetched()),
+        value: AppCompositionRoot().makeMyDevicesBloc(),
       ),
       BlocProvider<InternetDevicesBloc>.value(
         value: AppCompositionRoot().makeInternetDevicesBloc(),

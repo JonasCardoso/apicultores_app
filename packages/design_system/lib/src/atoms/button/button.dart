@@ -51,7 +51,7 @@ class Button extends StatelessWidget {
                   width: Spacing.small,
                 )
               ],
-              Text(label, style: MyTypography.captionRegular),
+              Text(label, style: MyTypography.h5Regular),
             ],
           ),
         );
@@ -85,7 +85,7 @@ class Button extends StatelessWidget {
               ],
               Text(
                 label,
-                style: MyTypography.captionRegular
+                style: MyTypography.h5Regular
                     .copyWith(color: SurfaceColor.secondary),
               ),
             ],

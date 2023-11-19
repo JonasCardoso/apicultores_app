@@ -3,13 +3,22 @@ import 'package:apicultores_app/shared/strings.dart';
 import 'package:design_system/design_system.dart';
 
 class LocalDeviceCard extends StatelessWidget {
-  const LocalDeviceCard({super.key, required this.localDevice});
+  const LocalDeviceCard._({required this.localDevice, required bool showDetail})
+      : _showDetail = showDetail;
   final LocalBeeDeviceEntity localDevice;
+
+  final bool _showDetail;
+
+  factory LocalDeviceCard({required LocalBeeDeviceEntity localDevice}) =>
+      LocalDeviceCard._(localDevice: localDevice, showDetail: false);
+  factory LocalDeviceCard.detail({required LocalBeeDeviceEntity localDevice}) =>
+      LocalDeviceCard._(localDevice: localDevice, showDetail: true);
   @override
   Widget build(BuildContext context) {
     final isConnected = localDevice.status == LocalBeeDeviceStatus.connected;
     return Container(
       padding: const EdgeInsets.all(Spacing.small),
+      margin: const EdgeInsets.all(Spacing.xtiny),
       decoration: BoxDecoration(
         color: SurfaceColor.foregroundColor,
         borderRadius: BorderRadius.circular(Spacing.small),
@@ -41,12 +50,12 @@ class LocalDeviceCard extends StatelessWidget {
               ),
             ],
           ),
-          const Expanded(
-            child: SizedBox(),
+          const SizedBox(
+            height: Spacing.medium,
           ),
           Text(
             localDevice.device.name,
-            style: MyTypography.h3,
+            style: MyTypography.h5Strong,
           ),
           if (!isConnected) ...[
             const SizedBox(
@@ -54,7 +63,16 @@ class LocalDeviceCard extends StatelessWidget {
             ),
             Text(
               Strings.devicesLocalCardDisconnectedMessage,
-              style: MyTypography.small,
+              style: MyTypography.captionRegular,
+            ),
+          ],
+          if (_showDetail) ...[
+            const SizedBox(
+              height: Spacing.small,
+            ),
+            Text(
+              "Dados a cada ${localDevice.device.frequencyOfSavingData.text}",
+              style: MyTypography.captionRegular,
             ),
           ],
           const Expanded(

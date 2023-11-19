@@ -42,7 +42,7 @@ class _DescriptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       description,
-      style: MyTypography.small.copyWith(
+      style: MyTypography.captionRegular.copyWith(
         color: TextColor.unspecial,
       ),
     );

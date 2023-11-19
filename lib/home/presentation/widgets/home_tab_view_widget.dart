@@ -1,5 +1,5 @@
 import 'package:apicultores_app/features/devices/my_devices/presentation/screens/devices_screen.dart';
-import 'package:apicultores_app/features/graphs/screens/graphs_screen.dart';
+import 'package:apicultores_app/features/graphs/presentation/screens/graphs_screen.dart';
 import 'package:apicultores_app/home/business_logic/bloc/bottom_navigation_bloc.dart';
 import 'package:apicultores_app/home/business_logic/entities/bottom_navigation_item_type.dart';
 import 'package:apicultores_app/shared/strings.dart';

@@ -13,7 +13,7 @@ class InternetDevicesEmptyWidget extends StatelessWidget {
       children: [
         Text(
           Strings.devicesInternetEmptyMessage,
-          style: MyTypography.captionRegular,
+          style: MyTypography.h5Regular,
         ),
         const SizedBox(
           height: Spacing.medium,

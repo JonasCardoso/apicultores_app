@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:apicultores_app/features/devices/my_devices/data/dtos/bee_device_dto.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/dtos/bee_device_with_ip_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:collection/collection.dart';

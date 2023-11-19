@@ -20,7 +20,7 @@ class ConnectDeviceToInternetLoadingWidget extends StatelessWidget {
           ),
           Text(
             Strings.connectDeviceToInternetLoadingTitle,
-            style: MyTypography.captionRegular,
+            style: MyTypography.h5Regular,
           )
         ],
       ),

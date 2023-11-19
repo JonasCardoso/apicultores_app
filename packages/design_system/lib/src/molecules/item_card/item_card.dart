@@ -64,7 +64,7 @@ class ItemCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: MyTypography.captionRegular.copyWith(
+                        style: MyTypography.h5Regular.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -74,7 +74,7 @@ class ItemCard extends StatelessWidget {
                         ),
                         Text(
                           subtitle!,
-                          style: MyTypography.small,
+                          style: MyTypography.captionRegular,
                         ),
                       ],
                     ],

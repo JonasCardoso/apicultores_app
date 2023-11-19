@@ -26,7 +26,7 @@ class MyDevicesBlocRepository {
             beeDeviceLocalDataSource: BeeDeviceLocalDataSource(),
           ),
         ),
-      ),
+      )..add(const MyDevicesLocalFetched()),
       internetDevicesBloc: InternetDevicesBloc(
         InternetDevicesUseCase(
           beeDeviceRepository: BeeDeviceRepository(

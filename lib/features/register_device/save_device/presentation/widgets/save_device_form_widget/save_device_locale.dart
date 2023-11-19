@@ -63,7 +63,7 @@ class _SaveDeviceLocaleState extends State<_SaveDeviceLocale> {
             ),
             Text(
               formFieldState.errorText!,
-              style: MyTypography.small.copyWith(
+              style: MyTypography.captionRegular.copyWith(
                 color: SurfaceColor.error,
               ),
             )

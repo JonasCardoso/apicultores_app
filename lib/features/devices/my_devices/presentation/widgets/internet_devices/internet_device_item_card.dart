@@ -43,7 +43,7 @@ class InternetDeviceItemCard extends StatelessWidget {
                     ),
                     Text(
                       "Cadastrado",
-                      style: MyTypography.small,
+                      style: MyTypography.captionRegular,
                     ),
                   ],
                 )
@@ -60,7 +60,7 @@ class InternetDeviceItemCard extends StatelessWidget {
                         ),
                         Text(
                           "Atualizar",
-                          style: MyTypography.small,
+                          style: MyTypography.captionRegular,
                         ),
                       ],
                     )

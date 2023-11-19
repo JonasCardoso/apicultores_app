@@ -11,6 +11,23 @@ class BeeDeviceFrequencySavingEntity extends Equatable {
     required this.timeUnit,
   });
 
+  String get text {
+    return '${timeValue.toString()} $_timeUnitText';
+  }
+
+  String get _timeUnitText {
+    switch (timeUnit) {
+      case BeeDeviceFrequencyTimeUnit.seconds:
+        return timeValue == 1 ? "segundo" : "segundos";
+      case BeeDeviceFrequencyTimeUnit.minutes:
+        return timeValue == 1 ? "minuto" : "minutos";
+      case BeeDeviceFrequencyTimeUnit.hours:
+        return timeValue == 1 ? "hora" : "horas";
+      case BeeDeviceFrequencyTimeUnit.days:
+        return timeValue == 1 ? "dia" : "dias";
+    }
+  }
+
   factory BeeDeviceFrequencySavingEntity.fromDTO(
           BeeDeviceFrequencyOfSavingDTO dto) =>
       BeeDeviceFrequencySavingEntity(

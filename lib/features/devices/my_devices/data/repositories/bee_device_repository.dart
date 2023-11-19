@@ -2,6 +2,8 @@ import 'package:apicultores_app/features/devices/my_devices/data/data_sources/be
 import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/bee_device_entity.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/data_sources/bee_device_local_data_source.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/dtos/bee_device_with_ip_dto.dart';
+import 'package:apicultores_app/features/graphs/business_logic/entities/graph_data_entity.dart';
+import 'package:apicultores_app/features/graphs/business_logic/entities/graph_properties_entity.dart';
 
 class BeeDeviceRepository {
   final BeeDeviceConnectionDataSource _beeDeviceConnectionDataSource;
@@ -43,6 +45,15 @@ class BeeDeviceRepository {
         )
         .toList();
   }
+
+  Future<GraphDataEntity> getGraphData(GraphPropertiesEntity properties) =>
+      _beeDeviceConnectionDataSource
+          .getGraphData(
+            properties.toDTO(),
+          )
+          .then(
+            (value) => GraphDataEntity.fromDTO(value),
+          );
 
   Future<void> saveDeviceLocally({
     required BeeDeviceEntity beeDeviceEntity,

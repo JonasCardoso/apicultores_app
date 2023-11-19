@@ -27,7 +27,7 @@ class InternetDevicesSearchWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   Strings.devicesInternetSearchMessage,
-                  style: MyTypography.captionRegular,
+                  style: MyTypography.h5Regular,
                 ),
               ),
             ],

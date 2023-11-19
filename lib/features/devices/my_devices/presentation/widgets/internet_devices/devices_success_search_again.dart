@@ -15,7 +15,7 @@ class DevicesSuccessSearchAgain extends StatelessWidget {
         Expanded(
           child: Text(
             Strings.devicesSuccessDescription,
-            style: MyTypography.captionRegular,
+            style: MyTypography.h5Regular,
           ),
         ),
         const SizedBox(

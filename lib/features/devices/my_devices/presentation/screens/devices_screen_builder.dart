@@ -62,7 +62,7 @@ class _SectionTitle extends StatelessWidget {
         children: [
           Text(
             text,
-            style: MyTypography.bodyStrong,
+            style: MyTypography.h4Strong,
           ),
           const SizedBox(
             height: Spacing.large,
