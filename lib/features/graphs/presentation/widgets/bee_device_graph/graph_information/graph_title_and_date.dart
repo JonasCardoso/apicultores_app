@@ -18,7 +18,7 @@ class GraphTitleAndDate extends StatelessWidget {
           style: MyTypography.h3,
         ),
         const SizedBox(
-          height: Spacing.medium,
+          height: Spacing.small,
         ),
         GraphDateInformationWidget(
           graphDataBuilder: graphDataBuilder,

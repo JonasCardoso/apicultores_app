@@ -23,9 +23,23 @@ class GraphsDeviceSelectionWidgetBuilder extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: Spacing.large),
-          child: Text(
-            'Configurações de coleta',
-            style: MyTypography.h4Strong,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Configurações de coleta',
+                style: MyTypography.h3,
+              ),
+              const SizedBox(
+                height: Spacing.small,
+              ),
+              Text(
+                'Escolha o dispositivo e o período que deseja ver os dados',
+                style: MyTypography.bodyStrong.copyWith(
+                  color: TextColor.unspecial,
+                ),
+              ),
+            ],
           ),
         ),
         BlocConsumer<BeeDeviceGraphBloc, BeeDeviceGraphState>(

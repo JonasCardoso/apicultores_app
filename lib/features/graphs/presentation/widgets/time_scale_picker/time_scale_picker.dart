@@ -13,13 +13,22 @@ class TimeScalePicker extends StatefulWidget {
 
 class _TimeScalePickerState extends State<TimeScalePicker>
     with SingleTickerProviderStateMixin {
-  late final TabController _tabController = TabController(
-    length: TimeScaleType.values.length,
-    vsync: this,
-  );
+  late final TabController _tabController;
 
   @override
   void initState() {
+    final configurationsState =
+        context.read<BeeDeviceGraphConfigurationsBloc>().state;
+    final initialTimeScale =
+        configurationsState is BeeDeviceGraphConfigurationsSuccess
+            ? configurationsState.timeScaleType
+            : TimeScaleType.values.first;
+    final initialIndex = TimeScaleType.values.indexOf(initialTimeScale);
+    _tabController = TabController(
+      length: TimeScaleType.values.length,
+      vsync: this,
+      initialIndex: initialIndex,
+    );
     _tabController.addListener(() {
       if (!_tabController.indexIsChanging) {
         context.read<BeeDeviceGraphConfigurationsBloc>().add(
@@ -30,6 +39,12 @@ class _TimeScalePickerState extends State<TimeScalePicker>
       }
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override

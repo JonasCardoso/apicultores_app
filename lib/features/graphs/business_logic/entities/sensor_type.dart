@@ -24,4 +24,15 @@ extension SensorTypeInfo on SensorType {
         return 'Proximidade';
     }
   }
+
+  String get unit {
+    switch (this) {
+      case SensorType.internalSound:
+        return 'dB';
+      case SensorType.externalSound:
+        return 'dB';
+      case SensorType.proximity:
+        return '';
+    }
+  }
 }

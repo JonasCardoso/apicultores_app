@@ -25,7 +25,7 @@ class BeeDeviceGraphWidgetBuilder extends StatelessWidget {
             ],
           );
         }
-        return SfCartesianChart();
+        return const SizedBox();
       },
     );
   }

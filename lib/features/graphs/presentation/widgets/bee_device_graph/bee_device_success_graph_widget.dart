@@ -2,6 +2,7 @@ import 'package:apicultores_app/features/graphs/business_logic/bloc/bee_device_g
 import 'package:apicultores_app/features/graphs/business_logic/entities/graph_data_entity.dart';
 import 'package:apicultores_app/features/graphs/business_logic/entities/graph_properties_entity.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/bee_device_graph_data_builder.dart';
+import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/graph_details/graph_details_widget.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/graph_information/bee_device_graph_information_widget.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/visible_sensors/bee_device_graph_visible_sensors_widget.dart';
 import 'package:design_system/design_system.dart';
@@ -30,6 +31,9 @@ class BeeDeviceSuccessGraphWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BeeDeviceGraphInformationWidget(graphDataBuilder: builder),
+            const SizedBox(
+              height: Spacing.medium,
+            ),
             Container(
               color: SurfaceColor.foregroundColor,
               child: Column(
@@ -55,7 +59,18 @@ class BeeDeviceSuccessGraphWidget extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            const SizedBox(
+              height: Spacing.xlarge,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Spacing.large,
+              ),
+              child: GraphDetailsWidget(
+                graphBuilder: builder,
+              ),
+            ),
           ],
         );
       }
