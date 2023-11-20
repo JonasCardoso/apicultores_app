@@ -48,4 +48,28 @@ class BeeDeviceLocalDataSource {
       );
     }
   }
+
+  Future<void> updateDevice(BeeDeviceWithIpDTO beeDeviceDTO) async {
+    final devices = await getDevices();
+    final sharedPreferences = await SharedPreferences.getInstance();
+    final index = devices.indexWhere(
+        (element) => element.beeDeviceDTO.id == beeDeviceDTO.beeDeviceDTO.id);
+    devices[index] = beeDeviceDTO;
+    await sharedPreferences.setStringList(
+      'devices',
+      devices.map<String>((e) => json.encode(e.toJson())).toList(),
+    );
+  }
+
+  Future<void> deleteDevice(String id) async {
+    final devices = await getDevices();
+    final sharedPreferences = await SharedPreferences.getInstance();
+    final index =
+        devices.indexWhere((element) => element.beeDeviceDTO.id == id);
+    devices.removeAt(index);
+    await sharedPreferences.setStringList(
+      'devices',
+      devices.map<String>((e) => json.encode(e.toJson())).toList(),
+    );
+  }
 }

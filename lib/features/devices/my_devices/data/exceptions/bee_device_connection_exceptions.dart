@@ -19,3 +19,11 @@ class BeeDeviceConnectionGetDataException extends BeeDeviceConnectionException {
           message: 'Failed to get data from device',
         );
 }
+
+class BeeDeviceConnectionResetDataException
+    extends BeeDeviceConnectionException {
+  const BeeDeviceConnectionResetDataException()
+      : super(
+          message: 'Failed to reset data from device',
+        );
+}

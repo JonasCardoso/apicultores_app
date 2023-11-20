@@ -14,14 +14,16 @@ class Button extends StatelessWidget {
     this.fill = false,
   });
   final String label;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final ButtonVariant variant;
   final IconData? icon;
   final bool fill;
   @override
   Widget build(BuildContext context) {
+    final disabled = onPressed == null;
     switch (variant) {
       case ButtonVariant.primary:
+      case ButtonVariant.destructive:
         return ElevatedButton(
           onPressed: onPressed,
           style: ButtonStyle(
@@ -31,9 +33,13 @@ class Button extends StatelessWidget {
                 vertical: Spacing.medium,
               ),
             ),
+            backgroundColor: MaterialStateProperty.all(
+              variant.backgroundColor(disabled),
+            ),
             minimumSize: MaterialStateProperty.all(
               Size(fill ? double.infinity : 0, 0),
             ),
+            elevation: MaterialStateProperty.all(0),
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),
@@ -44,18 +50,21 @@ class Button extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (icon != null) ...[
-                MyIcon(
-                  icon!,
-                ),
+                MyIcon(icon!, color: variant.textColor(disabled)),
                 const SizedBox(
                   width: Spacing.small,
                 )
               ],
-              Text(label, style: MyTypography.h5Regular),
+              Text(
+                label,
+                style: MyTypography.bodyStrong.copyWith(
+                  color: variant.textColor(disabled),
+                ),
+              ),
             ],
           ),
         );
-      case ButtonVariant.secondary:
+      case ButtonVariant.outlined:
         return OutlinedButton(
           onPressed: onPressed,
           style: OutlinedButton.styleFrom(
@@ -78,6 +87,7 @@ class Button extends StatelessWidget {
               if (icon != null) ...[
                 MyIcon(
                   icon!,
+                  color: TextColor.special,
                 ),
                 const SizedBox(
                   width: Spacing.small,
@@ -85,8 +95,8 @@ class Button extends StatelessWidget {
               ],
               Text(
                 label,
-                style: MyTypography.h5Regular
-                    .copyWith(color: SurfaceColor.secondary),
+                style:
+                    MyTypography.bodyStrong.copyWith(color: TextColor.special),
               ),
             ],
           ),

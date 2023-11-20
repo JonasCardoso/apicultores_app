@@ -13,7 +13,7 @@ class AddNewDeviceButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Button(
       label: Strings.addNewDeviceButton,
-      variant: ButtonVariant.secondary,
+      variant: ButtonVariant.outlined,
       fill: true,
       icon: Icons.add,
       onPressed: () {

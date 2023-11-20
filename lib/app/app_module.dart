@@ -1,4 +1,6 @@
 import 'package:apicultores_app/app/guards/tab_guard.dart';
+import 'package:apicultores_app/features/devices/device_details/presentation/screens/device_details_screen.dart';
+import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/local_bee_device_entity.dart';
 import 'package:apicultores_app/features/register_device/connect_device_to_internet/presentation/screens/connect_device_to_internet_screen.dart';
 import 'package:apicultores_app/features/register_device/find_new_devices/presentation/screens/find_new_devices_screen.dart';
 import 'package:apicultores_app/features/register_device/save_device/presentation/screens/save_device_screen.dart';
@@ -30,6 +32,12 @@ class AppModule extends Module {
       '/devices/connect/internet',
       child: (context) => ConnectDeviceToInternetScreen(
         deviceEntity: r.args.data as BluetoothDeviceEntity,
+      ),
+    );
+    r.child(
+      '/devices/details',
+      child: (context) => DeviceDetailsScreen(
+        device: r.args.data as LocalBeeDeviceEntity,
       ),
     );
     r.child(

@@ -39,7 +39,7 @@ class _SaveDeviceLocaleState extends State<_SaveDeviceLocale> {
           ),
           Button(
             fill: true,
-            variant: ButtonVariant.secondary,
+            variant: ButtonVariant.outlined,
             icon: locationIsSelected ? Icons.check : Icons.search,
             label: locationIsSelected
                 ? Strings.saveDeviceFormDeviceLocaleCurrent

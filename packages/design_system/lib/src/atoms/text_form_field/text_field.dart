@@ -1,6 +1,8 @@
 import 'package:design_system/src/theme/theme.dart';
 import 'package:flutter/material.dart';
 
+part 'text_field_variant.dart';
+
 class TextField extends StatelessWidget {
   const TextField({
     super.key,
@@ -18,6 +20,7 @@ class TextField extends StatelessWidget {
     this.style,
     this.textAlign,
     this.enabled,
+    this.variant = TextFieldVariant.box,
   });
   final String? label;
   final String? hint;
@@ -33,6 +36,7 @@ class TextField extends StatelessWidget {
   final int? maxLength;
   final TextAlign? textAlign;
   final bool? enabled;
+  final TextFieldVariant variant;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -55,19 +59,27 @@ class TextField extends StatelessWidget {
         ),
         hintText: hint,
         labelText: label,
-        fillColor: SurfaceColor.foregroundColor,
-        filled: true,
+        fillColor: variant == TextFieldVariant.box
+            ? SurfaceColor.foregroundColor
+            : null,
+        filled: variant == TextFieldVariant.box ? true : false,
         focusColor: SurfaceColor.primaryPallete.shade800,
         suffixIcon: icon != null
             ? IconButton(
-                icon: Icon(icon),
+                icon: Icon(
+                  icon,
+                  color: TextColor.special,
+                ),
                 onPressed: onIconTap,
               )
             : null,
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: SurfaceColor.primaryPallete.shade800),
-          borderRadius: BorderRadius.circular(Spacing.xlarge),
-        ),
+        border: variant == TextFieldVariant.box
+            ? OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: SurfaceColor.primaryPallete.shade800),
+                borderRadius: BorderRadius.circular(Spacing.xlarge),
+              )
+            : null,
       ),
     );
   }

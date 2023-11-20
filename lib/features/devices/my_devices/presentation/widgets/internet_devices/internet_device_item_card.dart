@@ -89,7 +89,7 @@ class InternetDeviceItemCard extends StatelessWidget {
         actions: [
           Button(
               label: 'Cancelar',
-              variant: ButtonVariant.secondary,
+              variant: ButtonVariant.outlined,
               onPressed: () {
                 Modular.to.pop(false);
               }),

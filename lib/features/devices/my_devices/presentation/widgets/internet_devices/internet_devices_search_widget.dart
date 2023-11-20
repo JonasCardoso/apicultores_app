@@ -38,7 +38,7 @@ class InternetDevicesSearchWidget extends StatelessWidget {
           Button(
             label: Strings.devicesInternetSearchButton,
             fill: true,
-            variant: ButtonVariant.secondary,
+            variant: ButtonVariant.outlined,
             onPressed: () {
               BlocProvider.of<InternetDevicesBloc>(context)
                   .add(const InternetDevicesFetched());

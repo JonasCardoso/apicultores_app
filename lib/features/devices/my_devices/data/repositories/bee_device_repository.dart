@@ -75,4 +75,21 @@ class BeeDeviceRepository {
       return false;
     }
   }
+
+  Future<void> updateDevice(BeeDeviceEntity beeDeviceEntity) async {
+    await _beeDeviceConnectionDataSource.sendBeeDeviceData(
+      beeDeviceDTO: beeDeviceEntity.toDTO(),
+      deviceIp: beeDeviceEntity.deviceIp,
+    );
+    await _beeDeviceLocalDataSource.updateDevice(
+      BeeDeviceWithIpDTO(
+        beeDeviceDTO: beeDeviceEntity.toDTO(),
+        deviceIp: beeDeviceEntity.deviceIp,
+      ),
+    );
+  }
+
+  Future<void> deleteDevice(BeeDeviceEntity beeDeviceEntity) async {
+    await _beeDeviceLocalDataSource.deleteDevice(beeDeviceEntity.id);
+  }
 }

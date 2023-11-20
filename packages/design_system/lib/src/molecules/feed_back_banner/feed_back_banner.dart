@@ -1,3 +1,4 @@
+import 'package:design_system/design_system.dart';
 import 'package:design_system/src/atoms/button/button.dart';
 import 'package:design_system/src/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,9 @@ class FeedBackBanner extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
+          MyIcon(
             icon,
-            size: 84,
+            iconSize: IconSize.xxlarge,
             color: iconColor,
           ),
           const SizedBox(
@@ -35,14 +36,14 @@ class FeedBackBanner extends StatelessWidget {
           ),
           Text(
             title,
-            style: MyTypography.h3.copyWith(fontWeight: FontWeight.bold),
+            style: MyTypography.h4Strong,
           ),
           const SizedBox(
             height: Spacing.medium,
           ),
           Text(
             description,
-            style: MyTypography.h5Regular,
+            style: MyTypography.bodyRegular,
           ),
           const SizedBox(
             height: Spacing.medium,

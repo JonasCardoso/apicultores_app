@@ -26,7 +26,7 @@ class GraphsDeviceSelectionFailureWidget extends StatelessWidget {
           Button(
             label: "Tentar novamente",
             fill: true,
-            variant: ButtonVariant.secondary,
+            variant: ButtonVariant.outlined,
             onPressed: () {
               context
                   .read<BeeDeviceGraphBloc>()

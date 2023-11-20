@@ -3,7 +3,6 @@ import 'package:apicultores_app/features/devices/my_devices/business_logic/entit
 import 'package:apicultores_app/features/devices/my_devices/presentation/widgets/local_devices/local_device_card.dart';
 import 'package:apicultores_app/features/devices/my_devices/presentation/widgets/local_devices/local_devices_empty.dart';
 import 'package:apicultores_app/features/register_device/shared/devices_navigation_delegate.dart';
-import 'package:apicultores_app/shared/strings.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,27 +16,8 @@ class LocalDevicesSectionWidget extends StatelessWidget {
   final DevicesNavigationDelegate navigation;
   @override
   Widget build(BuildContext context) {
+    final myDevicesBloc = context.read<MyDevicesBloc>();
     return SliverMainAxisGroup(slivers: [
-      if (localDevices.isNotEmpty)
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-              Button(
-                  label: "Novo dispositivo",
-                  fill: true,
-                  icon: Icons.add,
-                  onPressed: () {
-                    navigation.navigateToFindDevices();
-                  }),
-              const SizedBox(
-                height: Spacing.small,
-              ),
-              const SizedBox(
-                height: Spacing.large,
-              ),
-            ],
-          ),
-        ),
       localDevices.isNotEmpty
           ? SliverGrid.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -51,6 +31,10 @@ class LocalDevicesSectionWidget extends StatelessWidget {
                 final localDevice = localDevices[index];
                 return LocalDeviceCard(
                   localDevice: localDevice,
+                  onPressed: () async {
+                    await navigation.navigateToDetails(localDevice);
+                    myDevicesBloc.add(const MyDevicesLocalFetched());
+                  },
                 );
               },
             )

@@ -20,7 +20,7 @@ class InternetDevicesEmptyWidget extends StatelessWidget {
         ),
         Button(
           label: Strings.devicesInternetEmptyButton,
-          variant: ButtonVariant.secondary,
+          variant: ButtonVariant.outlined,
           fill: true,
           onPressed: () {
             BlocProvider.of<InternetDevicesBloc>(context)

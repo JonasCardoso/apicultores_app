@@ -23,7 +23,7 @@ class DevicesSuccessSearchAgain extends StatelessWidget {
         ),
         Button(
             label: Strings.devicesSuccessButton,
-            variant: ButtonVariant.secondary,
+            variant: ButtonVariant.outlined,
             onPressed: () {
               context
                   .read<InternetDevicesBloc>()

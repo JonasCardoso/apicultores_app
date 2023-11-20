@@ -15,6 +15,16 @@ class BeeDeviceFrequencySavingEntity extends Equatable {
     return '${timeValue.toString()} $_timeUnitText';
   }
 
+  BeeDeviceFrequencySavingEntity copyWith({
+    int? timeValue,
+    BeeDeviceFrequencyTimeUnit? timeUnit,
+  }) {
+    return BeeDeviceFrequencySavingEntity(
+      timeValue: timeValue ?? this.timeValue,
+      timeUnit: timeUnit ?? this.timeUnit,
+    );
+  }
+
   String get _timeUnitText {
     switch (timeUnit) {
       case BeeDeviceFrequencyTimeUnit.seconds:

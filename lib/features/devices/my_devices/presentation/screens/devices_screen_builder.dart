@@ -26,7 +26,14 @@ class DevicesScreenBuilder extends StatelessWidget {
               height: Spacing.large,
             ),
           ),
-          const _SectionTitle(text: 'Meus dispositivos'),
+          _SectionTitle(
+            text: 'Meus dispositivos',
+            leading: IconButton(
+                icon: Icons.add,
+                onPressed: () {
+                  navigationDelegate.navigateToFindDevices();
+                }),
+          ),
           MyDevicesWidgetBuilder(
             navigation: navigationDelegate,
           ),
@@ -52,20 +59,31 @@ class DevicesScreenBuilder extends StatelessWidget {
 }
 
 class _SectionTitle extends StatelessWidget {
-  const _SectionTitle({required this.text});
+  const _SectionTitle({
+    required this.text,
+    this.leading,
+  });
   final String text;
+  final Widget? leading;
   @override
   Widget build(BuildContext context) {
+    final leading = this.leading;
     return SliverToBoxAdapter(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            text,
-            style: MyTypography.h4Strong,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                text,
+                style: MyTypography.h4Strong,
+              ),
+              if (leading != null) leading,
+            ],
           ),
           const SizedBox(
-            height: Spacing.large,
+            height: Spacing.medium,
           ),
         ],
       ),

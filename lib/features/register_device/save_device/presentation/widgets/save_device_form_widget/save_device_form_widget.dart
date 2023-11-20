@@ -1,9 +1,10 @@
+import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/bee_device_frequency_saving_entity.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/dtos/enums/bee_frequency_time_unit.dart';
 import 'package:apicultores_app/features/register_device/save_device/business_logic/bloc/save_device_bloc.dart';
 import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/bee_device_entity.dart';
-import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/bee_device_frequency_saving_entity.dart';
 import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/bee_device_location_entity.dart';
 import 'package:apicultores_app/features/register_device/save_device/presentation/navigation/save_device_navigation_delegate.dart';
+import 'package:apicultores_app/features/register_device/save_device/presentation/widgets/save_device_form_widget/frequency_of_data_picker_widget.dart';
 import 'package:apicultores_app/shared/strings.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +24,11 @@ class SaveDeviceFormWidget extends StatelessWidget {
   final TextEditingController deviceNameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final locationInformation = _LocationInformation();
-  final frequencyTime = _FrequencyTime();
+  final frequencyTime = ValueNotifier<BeeDeviceFrequencySavingEntity>(
+      const BeeDeviceFrequencySavingEntity(
+    timeUnit: BeeDeviceFrequencyTimeUnit.minutes,
+    timeValue: 15,
+  ));
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +77,7 @@ class SaveDeviceFormWidget extends StatelessWidget {
       final beeDevice = BeeDeviceEntity(
         id: const Uuid().v4(),
         deviceIp: deviceIp,
-        frequencyOfSavingData: frequencyTime.toEntity(),
+        frequencyOfSavingData: frequencyTime.value,
         name: deviceNameController.text,
         location: locationInformation.toEntity(),
       );
