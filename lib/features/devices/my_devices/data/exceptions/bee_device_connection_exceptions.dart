@@ -20,10 +20,18 @@ class BeeDeviceConnectionGetDataException extends BeeDeviceConnectionException {
         );
 }
 
-class BeeDeviceConnectionResetDataException
+class BeeDeviceConnectionClearDataException
     extends BeeDeviceConnectionException {
-  const BeeDeviceConnectionResetDataException()
+  const BeeDeviceConnectionClearDataException()
       : super(
           message: 'Failed to reset data from device',
+        );
+}
+
+class BeeDeviceConnectionDisconnectException
+    extends BeeDeviceConnectionException {
+  const BeeDeviceConnectionDisconnectException()
+      : super(
+          message: 'Failed to disconnect device',
         );
 }

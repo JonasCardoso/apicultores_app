@@ -96,7 +96,7 @@ class _DeviceDetailsFormWidgetState extends State<DeviceDetailsFormWidget> {
                   frequencyTime: formModel.frequencyTime,
                 ),
                 const SizedBox(
-                  height: Spacing.xxlarge,
+                  height: Spacing.huge,
                 ),
                 const DeviceDetailsActionButtons(),
               ],

@@ -7,23 +7,35 @@ class DeviceDetailsActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Button(
-          label: 'Remover dispositivo',
-          icon: Icons.delete,
-          fill: true,
-          variant: ButtonVariant.destructive,
-          onPressed: () {
-            context.read<DeviceDetailsBloc>().add(
-                  const DeviceDetailsRemoved(),
-                );
-          },
-        ),
-        const SizedBox(
-          height: Spacing.medium,
-        ),
-      ],
-    );
+    return ActionsList(items: [
+      ActionsListItem(
+        label: 'Limpar dados coletados',
+        leftIcon: Icons.data_usage,
+        onPressed: () {
+          context.read<DeviceDetailsBloc>().add(
+                const DeviceDetailsDataCleared(),
+              );
+        },
+      ),
+      ActionsListItem(
+        label: 'Desconectar dispositivo',
+        leftIcon: Icons.wifi_off,
+        onPressed: () {
+          context.read<DeviceDetailsBloc>().add(
+                const DeviceDetailsDisconnected(),
+              );
+        },
+      ),
+      ActionsListItem(
+        label: 'Remover dispositivo',
+        leftIcon: Icons.delete,
+        variant: ActionsListItemVariant.destructive,
+        onPressed: () {
+          context.read<DeviceDetailsBloc>().add(
+                const DeviceDetailsRemoved(),
+              );
+        },
+      ),
+    ]);
   }
 }

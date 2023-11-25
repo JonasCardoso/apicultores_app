@@ -73,10 +73,16 @@ class TextField extends StatelessWidget {
                 onPressed: onIconTap,
               )
             : null,
-        border: variant == TextFieldVariant.box
+        focusedBorder: variant == TextFieldVariant.box
+            ? OutlineInputBorder(
+                borderSide: const BorderSide(color: SurfaceColor.primary),
+                borderRadius: BorderRadius.circular(Spacing.xlarge),
+              )
+            : null,
+        enabledBorder: variant == TextFieldVariant.box
             ? OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: SurfaceColor.primaryPallete.shade800),
+                    BorderSide(color: SurfaceColor.primaryPallete.shade900),
                 borderRadius: BorderRadius.circular(Spacing.xlarge),
               )
             : null,

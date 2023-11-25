@@ -92,4 +92,12 @@ class BeeDeviceRepository {
   Future<void> deleteDevice(BeeDeviceEntity beeDeviceEntity) async {
     await _beeDeviceLocalDataSource.deleteDevice(beeDeviceEntity.id);
   }
+
+  Future<void> clearData(BeeDeviceEntity beeDeviceEntity) async {
+    await _beeDeviceConnectionDataSource.clearData(beeDeviceEntity.deviceIp);
+  }
+
+  Future<void> disconnect(BeeDeviceEntity beeDeviceEntity) async {
+    await _beeDeviceConnectionDataSource.disconnect(beeDeviceEntity.deviceIp);
+  }
 }

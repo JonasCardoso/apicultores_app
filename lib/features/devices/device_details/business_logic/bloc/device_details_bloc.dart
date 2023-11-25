@@ -10,6 +10,8 @@ class DeviceDetailsBloc extends Bloc<DeviceDetailsEvent, DeviceDetailsState> {
   DeviceDetailsBloc(this._useCase) : super(DeviceDetailsInitial()) {
     on<DeviceDetailsUpdated>(_onUpdated);
     on<DeviceDetailsRemoved>(_onRemoved);
+    on<DeviceDetailsDataCleared>(_onDataCleared);
+    on<DeviceDetailsDisconnected>(_onDisconnected);
   }
 
   final DeviceDetailsUseCase _useCase;
@@ -37,6 +39,32 @@ class DeviceDetailsBloc extends Bloc<DeviceDetailsEvent, DeviceDetailsState> {
       emit(DeviceDetailsRemoveSucces());
     } catch (e) {
       emit(DeviceDetailsRemoveFailure());
+    }
+  }
+
+  void _onDataCleared(
+    DeviceDetailsDataCleared event,
+    Emitter<DeviceDetailsState> emit,
+  ) async {
+    try {
+      emit(DeviceDetailsLoading());
+      await _useCase.clearData();
+      emit(DeviceDetailsDataClearedSuccess());
+    } catch (e) {
+      emit(DeviceDetailsDataClearedFailure());
+    }
+  }
+
+  void _onDisconnected(
+    DeviceDetailsDisconnected event,
+    Emitter<DeviceDetailsState> emit,
+  ) async {
+    try {
+      emit(DeviceDetailsLoading());
+      await _useCase.disconnect();
+      emit(DeviceDetailsDisconnectSuccess());
+    } catch (e) {
+      emit(DeviceDetailsDisconnectFailure());
     }
   }
 }

@@ -18,3 +18,11 @@ final class DeviceDetailsUpdated extends DeviceDetailsEvent {
 final class DeviceDetailsRemoved extends DeviceDetailsEvent {
   const DeviceDetailsRemoved();
 }
+
+final class DeviceDetailsDataCleared extends DeviceDetailsEvent {
+  const DeviceDetailsDataCleared();
+}
+
+final class DeviceDetailsDisconnected extends DeviceDetailsEvent {
+  const DeviceDetailsDisconnected();
+}

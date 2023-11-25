@@ -22,4 +22,16 @@ class DeviceDetailsUseCase {
       _beeDeviceEntity,
     );
   }
+
+  Future<void> clearData() async {
+    await _beeDeviceRepository.clearData(
+      _beeDeviceEntity,
+    );
+  }
+
+  Future<void> disconnect() async {
+    await _beeDeviceRepository.disconnect(
+      _beeDeviceEntity,
+    );
+  }
 }

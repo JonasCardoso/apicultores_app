@@ -85,4 +85,40 @@ class BeeDeviceConnectionDataSource {
     }
     return BeeDeviceDTO.fromJson(jsonDecode(response.body));
   }
+
+  Future<void> clearData(String deviceIp) async {
+    final response = await http.get(
+      Uri.parse('http://$deviceIp/clear'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    ).timeout(
+      const Duration(seconds: 1),
+      onTimeout: () {
+        return http.Response(
+            'Error', 408); // Request Timeout response status code
+      },
+    );
+    if (response.statusCode != 200) {
+      throw const BeeDeviceConnectionClearDataException();
+    }
+  }
+
+  Future<void> disconnect(String deviceIp) async {
+    final response = await http.get(
+      Uri.parse('http://$deviceIp/disconnect'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    ).timeout(
+      const Duration(seconds: 1),
+      onTimeout: () {
+        return http.Response(
+            'Error', 408); // Request Timeout response status code
+      },
+    );
+    if (response.statusCode != 200) {
+      throw const BeeDeviceConnectionDisconnectException();
+    }
+  }
 }
