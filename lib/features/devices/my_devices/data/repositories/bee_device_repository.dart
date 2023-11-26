@@ -100,4 +100,17 @@ class BeeDeviceRepository {
   Future<void> disconnect(BeeDeviceEntity beeDeviceEntity) async {
     await _beeDeviceConnectionDataSource.disconnect(beeDeviceEntity.deviceIp);
   }
+
+  Future<BeeDeviceEntity?> getDevice(String deviceIp) async {
+    try {
+      final deviceData =
+          await _beeDeviceConnectionDataSource.getDeviceData(deviceIp);
+      return BeeDeviceEntity.fromDTO(
+        deviceData,
+        deviceIp,
+      );
+    } catch (e, __) {
+      return null;
+    }
+  }
 }

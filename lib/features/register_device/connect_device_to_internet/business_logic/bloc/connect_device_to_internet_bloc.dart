@@ -45,9 +45,12 @@ class ConnectDeviceToInternetBloc
     ConnectDeviceToInternetConnected event,
     Emitter<ConnectDeviceToInternetState> emit,
   ) async {
+    final isDeviceRegistered =
+        await _useCase.isDeviceRegistered(event.deviceIp);
     emit(
       ConnectDeviceToInternetSuccess(
         deviceIp: event.deviceIp,
+        isDeviceRegistered: isDeviceRegistered,
       ),
     );
 

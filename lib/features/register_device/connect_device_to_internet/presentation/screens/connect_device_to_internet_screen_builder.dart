@@ -19,14 +19,18 @@ class ConnectDeviceToInternetScreenBuilder extends StatelessWidget {
         ConnectDeviceToInternetState>(
       listener: (context, state) async {
         if (state is ConnectDeviceToInternetSuccess) {
-          await Future.delayed(const Duration(seconds: 2));
-          navigationDelegate.navigateToSaveDevice(state.deviceIp);
+          if (state.possibleRegisteredDevice == null) {
+            await Future.delayed(const Duration(seconds: 2));
+            navigationDelegate.navigateToSaveDevice(state.deviceIp);
+          }
         }
       },
       builder: (context, state) => switch (state) {
         ConnectDeviceToInternetSuccess state =>
           ConnectDeviceToInternetSuccessWidget(
             deviceIp: state.deviceIp,
+            possibleRegisteredDevice: state.possibleRegisteredDevice,
+            navigationDelegate: navigationDelegate,
           ),
         ConnectDeviceToInternetInitial state =>
           ConnectDeviceToInternetWiFiAvailableWidget(

@@ -8,6 +8,6 @@ class SaveDeviceNavigationDelegate {
   }
 
   void navigateToDevices() {
-    Modular.to.navigate('/');
+    Modular.to.navigate('/devices');
   }
 }

@@ -4,7 +4,7 @@ sealed class ConnectDeviceToInternetState extends Equatable {
   const ConnectDeviceToInternetState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 final class ConnectDeviceToInternetInitial
@@ -25,8 +25,17 @@ final class ConnectDeviceToInternetLoading
 final class ConnectDeviceToInternetSuccess
     extends ConnectDeviceToInternetState {
   final String deviceIp;
+  final BeeDeviceEntity? possibleRegisteredDevice;
+  const ConnectDeviceToInternetSuccess({
+    required this.deviceIp,
+    required this.possibleRegisteredDevice,
+  });
 
-  const ConnectDeviceToInternetSuccess({required this.deviceIp});
+  @override
+  List<Object?> get props => [
+        deviceIp,
+        possibleRegisteredDevice,
+      ];
 }
 
 final class ConnectDeviceToInternetFailure

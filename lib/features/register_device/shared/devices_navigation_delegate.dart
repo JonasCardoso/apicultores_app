@@ -19,4 +19,8 @@ class DevicesNavigationDelegate {
   Future<void> navigateToDetails(LocalBeeDeviceEntity device) {
     return Modular.to.pushNamed('/devices/details', arguments: device);
   }
+
+  void navigateToDevices() {
+    Modular.to.navigate('/devices');
+  }
 }
