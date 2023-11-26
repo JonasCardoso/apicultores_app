@@ -1,3 +1,5 @@
+import 'package:apicultores_app/features/graphs/business_logic/entities/graph_period_entity.dart';
+
 enum PeriodData {
   lastWeek,
   lastMonth,
@@ -19,17 +21,21 @@ extension PeriodInformation on PeriodData {
     }
   }
 
-  DateTime get date {
+  GraphPeriodEntity get graphPeriod {
     final now = DateTime.now();
     switch (this) {
       case PeriodData.lastWeek:
-        return now.subtract(const Duration(days: 7));
+        return GraphPeriodEntity(
+            startDate: now.subtract(const Duration(days: 7)));
       case PeriodData.lastMonth:
-        return now.subtract(const Duration(days: 30));
+        return GraphPeriodEntity(
+            startDate: now.subtract(const Duration(days: 30)));
       case PeriodData.lastSixMonths:
-        return now.subtract(const Duration(days: 180));
+        return GraphPeriodEntity(
+            startDate: now.subtract(const Duration(days: 180)));
       case PeriodData.lastYear:
-        return now.subtract(const Duration(days: 365));
+        return GraphPeriodEntity(
+            startDate: now.subtract(const Duration(days: 365)));
     }
   }
 }

@@ -9,7 +9,6 @@ class BottomNavigationUseCase {
   List<BottomNavigationItemType> get bottomNavigationItems => [
         BottomNavigationItemType.devices,
         BottomNavigationItemType.data,
-        BottomNavigationItemType.story,
       ];
 
   BottomNavigationItemType get currentTab => _repository.currentTab;

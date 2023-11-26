@@ -25,8 +25,6 @@ class TabGuard extends RouteGuard {
         return BottomNavigationItemType.devices;
       case '/graphs':
         return BottomNavigationItemType.data;
-      case '/story':
-        return BottomNavigationItemType.story;
     }
     return null;
   }

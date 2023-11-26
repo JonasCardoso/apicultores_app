@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/bee_device_entity.dart';
 import 'package:apicultores_app/features/register_device/connect_device_to_internet/business_logic/use_cases/connect_device_to_internet_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,12 +46,12 @@ class ConnectDeviceToInternetBloc
     ConnectDeviceToInternetConnected event,
     Emitter<ConnectDeviceToInternetState> emit,
   ) async {
-    final isDeviceRegistered =
-        await _useCase.isDeviceRegistered(event.deviceIp);
+    final possibleRegisteredDevice =
+        await _useCase.getPossibleRegisteredDevice(event.deviceIp);
     emit(
       ConnectDeviceToInternetSuccess(
         deviceIp: event.deviceIp,
-        isDeviceRegistered: isDeviceRegistered,
+        possibleRegisteredDevice: possibleRegisteredDevice,
       ),
     );
 

@@ -8,10 +8,11 @@ class PeriodCard extends StatelessWidget {
     required this.periodData,
     this.isSelected = false,
   });
-  final PeriodData periodData;
+  final PeriodData? periodData;
   final bool isSelected;
   @override
   Widget build(BuildContext context) {
+    final periodData = this.periodData;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
@@ -38,12 +39,15 @@ class PeriodCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Text(periodData.text, style: MyTypography.bodyStrong),
+          Text(periodData != null ? periodData.text : "Customizada",
+              style: MyTypography.bodyStrong),
           const SizedBox(
             height: Spacing.xtiny,
           ),
           Text(
-            "De hoje até ${DateFormat('dd/MM/yyyy').format(periodData.date)}",
+            periodData != null
+                ? "De hoje até ${DateFormat('dd/MM/yyyy').format(periodData.graphPeriod.startDate)}"
+                : "Data escolhida por você",
             style: MyTypography.captionRegular,
             overflow: TextOverflow.ellipsis,
           ),

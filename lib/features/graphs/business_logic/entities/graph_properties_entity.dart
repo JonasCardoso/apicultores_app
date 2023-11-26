@@ -1,15 +1,16 @@
 import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/bee_device_entity.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/dtos/bee_device_with_ip_dto.dart';
+import 'package:apicultores_app/features/graphs/business_logic/entities/graph_period_entity.dart';
 import 'package:apicultores_app/features/graphs/data/dtos/graph_properties_dto.dart';
 import 'package:equatable/equatable.dart';
 
 class GraphPropertiesEntity extends Equatable {
   final BeeDeviceEntity device;
-  final DateTime startDate;
+  final GraphPeriodEntity period;
 
   const GraphPropertiesEntity({
     required this.device,
-    required this.startDate,
+    required this.period,
   });
 
   GraphPropertiesDTO toDTO() {
@@ -18,7 +19,7 @@ class GraphPropertiesEntity extends Equatable {
         beeDeviceDTO: device.toDTO(),
         deviceIp: device.deviceIp,
       ),
-      startDate: startDate.millisecondsSinceEpoch,
+      period: period.toDTO(),
     );
   }
 
@@ -26,13 +27,13 @@ class GraphPropertiesEntity extends Equatable {
     return GraphPropertiesEntity(
       device:
           BeeDeviceEntity.fromDTO(dto.device.beeDeviceDTO, dto.device.deviceIp),
-      startDate: DateTime.fromMillisecondsSinceEpoch(dto.startDate),
+      period: GraphPeriodEntity.fromDTO(dto.period),
     );
   }
 
   @override
   List<Object?> get props => [
         device,
-        startDate,
+        period,
       ];
 }

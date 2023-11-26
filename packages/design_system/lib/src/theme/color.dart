@@ -5,6 +5,7 @@ class SurfaceColor {
   static const Color primary = Color(_primaryPrimaryValue);
   static const Color secondary = Color.fromARGB(255, 95, 86, 52);
   static const Color backgroundColor = Color.fromARGB(255, 249, 249, 249);
+  static const Color deeperBackgroundColor = Color.fromARGB(255, 233, 233, 233);
   static const Color foregroundColor = Color.fromARGB(255, 255, 255, 255);
   static const Color disabled = Color.fromARGB(255, 234, 234, 234);
   static const Color error = Color.fromARGB(255, 229, 8, 8);

@@ -20,10 +20,6 @@ class HomeTabViewWidget extends StatelessWidget {
           return const Center(
             child: GraphsScreen(),
           );
-        case BottomNavigationItemType.story:
-          return const Center(
-            child: Text(Strings.bottomNavigationItemStory),
-          );
       }
     });
   }

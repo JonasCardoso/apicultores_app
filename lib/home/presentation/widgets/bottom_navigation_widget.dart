@@ -15,6 +15,7 @@ class BottomNavigationWidget extends StatelessWidget {
 
   Widget _buildItems(BuildContext context, BottomNavigationState state) {
     return BottomNavigationBar(
+      selectedItemColor: TextColor.special,
       currentIndex: state.items.indexOf(state.selectedItem),
       items: state.items
           .map((item) => BottomNavigationBarItem(

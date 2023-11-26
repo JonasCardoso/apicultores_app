@@ -26,15 +26,15 @@ class BeeDeviceConnectionDataSource {
   }
 
   Future<GraphDataDTO> getGraphData(GraphPropertiesDTO propertiesDTO) {
-    return http
-        .post(
-      Uri.parse('http://${propertiesDTO.device.deviceIp}/data'),
+    final dateQuery = propertiesDTO.period.endDate != null
+        ? 'start=${propertiesDTO.period.startDate.millisecondsSinceEpoch}?end=${propertiesDTO.period.endDate?.microsecondsSinceEpoch}'
+        : 'start=${propertiesDTO.period.startDate.millisecondsSinceEpoch}';
+    return http.get(
+      Uri.parse('http://${propertiesDTO.device.deviceIp}/data?$dateQuery'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(propertiesDTO.toJson()),
-    )
-        .then((value) {
+    ).then((value) {
       if (value.statusCode != 200) {
         throw const BeeDeviceConnectionGetDataException();
       }
