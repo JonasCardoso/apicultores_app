@@ -9,7 +9,10 @@ sealed class BeeDeviceGraphConfigurationsEvent extends Equatable {
 
 final class BeeDeviceGraphConfigurationsFetched
     extends BeeDeviceGraphConfigurationsEvent {
-  const BeeDeviceGraphConfigurationsFetched();
+  final DateTime lastDateInTimestamp;
+  const BeeDeviceGraphConfigurationsFetched({
+    required this.lastDateInTimestamp,
+  });
 }
 
 final class BeeDeviceGraphConfigurationsVisibilityChanged

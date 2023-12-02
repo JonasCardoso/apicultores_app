@@ -15,13 +15,14 @@ class ActionsList extends StatelessWidget {
         final leftIcon = item.leftIcon;
         final rightIcon = item.rightIcon;
         return GestureDetector(
+          behavior: HitTestBehavior.translucent,
           onTap: item.onPressed,
           child: Column(
+            mainAxisSize: MainAxisSize.max,
             children: [
-              if (index != 0)
-                const SizedBox(
-                  height: Spacing.large,
-                ),
+              const SizedBox(
+                height: Spacing.large,
+              ),
               Row(
                 children: [
                   if (leftIcon != null) ...[

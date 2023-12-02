@@ -28,23 +28,12 @@ class GraphTimeSkiperWidget extends StatelessWidget {
         const SizedBox(
           width: Spacing.small,
         ),
-        IconButton(
-          icon: Icons.today,
-          onPressed: () {
-            context.read<BeeDeviceGraphConfigurationsBloc>().add(
-                  BeeDeviceGraphConfigurationsTimeScaleChanged(
-                    timeScale: graphDataBuilder.configurations.timeScaleType,
-                  ),
-                );
-          },
-          variant: IconButtonVariant.outlined,
-          size: IconButtonSize.small,
-        ),
         const SizedBox(
           width: Spacing.small,
         ),
         IconButton(
-          onPressed: graphDataBuilder.configurations.endDate == null
+          onPressed: graphDataBuilder.configurations.endDate ==
+                  graphDataBuilder.configurations.lastDateInGraphData
               ? null
               : () {
                   context.read<BeeDeviceGraphConfigurationsBloc>().add(

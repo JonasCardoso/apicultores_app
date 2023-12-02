@@ -1,9 +1,9 @@
 import 'package:apicultores_app/features/graphs/business_logic/bloc/bee_device_graph_bloc.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/bee_device_success_graph_widget.dart';
+import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/graph_actions/graph_actions_area.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/time_scale_picker/time_scale_picker.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class BeeDeviceGraphWidgetBuilder extends StatelessWidget {
   const BeeDeviceGraphWidgetBuilder({super.key});

@@ -12,9 +12,8 @@ class HomeBlocProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
-      BlocProvider<BottomNavigationBloc>(
-        create: (context) =>
-            BottomNavigationBlocRepository().bottomNavigationBloc,
+      BlocProvider<BottomNavigationBloc>.value(
+        value: BottomNavigationBlocRepository().bottomNavigationBloc,
       )
     ], child: child);
   }

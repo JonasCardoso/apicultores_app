@@ -28,6 +28,24 @@ class GraphDataEntity extends Equatable {
         });
   }
 
+  List<List<dynamic>> transformDataInCSV() {
+    final csvData = <List<dynamic>>[];
+    csvData.add(['timestamp', ...SensorType.values.map((e) => e.name)]);
+    for (var i = 0; i < timestamps.length; i++) {
+      final timestamp = timestamps[i];
+      final proximity = data[SensorType.proximity]?[i];
+      final internalSound = data[SensorType.internalSound]?[i];
+      final externalSound = data[SensorType.externalSound]?[i];
+      csvData.add([
+        timestamp?.millisecondsSinceEpoch,
+        proximity,
+        internalSound,
+        externalSound,
+      ]);
+    }
+    return csvData;
+  }
+
   @override
   List<Object?> get props => [
         timestamps,

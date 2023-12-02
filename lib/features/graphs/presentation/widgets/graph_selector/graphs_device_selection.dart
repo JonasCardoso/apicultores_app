@@ -2,7 +2,6 @@ import 'package:apicultores_app/features/devices/my_devices/business_logic/entit
 import 'package:apicultores_app/features/graphs/business_logic/bloc/bee_device_graph_bloc.dart';
 import 'package:apicultores_app/features/graphs/business_logic/entities/graph_period_entity.dart';
 import 'package:apicultores_app/features/graphs/business_logic/entities/graph_properties_entity.dart';
-import 'package:apicultores_app/features/graphs/data/dtos/graph_period_dto.dart';
 import 'package:apicultores_app/features/graphs/presentation/constants/period_picker_const.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/graph_selector/graphs_devices_carousel.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/period_picker/custom_period_picker.dart';

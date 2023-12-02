@@ -9,16 +9,35 @@ class InternetDevicesFailureWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverMainAxisGroup(slivers: [
-      Text(
-        "Algo deu errado ao procurar na sua internet...",
-        style: MyTypography.h1,
+      SliverToBoxAdapter(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const MyIcon(Icons.wifi_off, color: SurfaceColor.error),
+                const SizedBox(
+                  width: Spacing.small,
+                ),
+                Text(
+                  "Algo deu errado ao procurar na sua internet...",
+                  style: MyTypography.bodyRegular,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: Spacing.medium,
+            ),
+            Button(
+                label: "Tente novamente",
+                fill: true,
+                onPressed: () {
+                  BlocProvider.of<InternetDevicesBloc>(context)
+                      .add(const InternetDevicesFetched());
+                })
+          ],
+        ),
       ),
-      Button(
-          label: "Tente novamente",
-          onPressed: () {
-            BlocProvider.of<InternetDevicesBloc>(context)
-                .add(const InternetDevicesFetched());
-          })
     ]);
   }
 }

@@ -32,18 +32,21 @@ extension TimeScaleTypeInfo on TimeScaleType {
     }
   }
 
-  DateTime startDuration(DateTime now) {
+  DateTime startDuration(DateTime date) {
+    late DateTime startDate;
     switch (this) {
       case TimeScaleType.hour:
-        return DateTime(now.year, now.month, now.day, now.hour);
+        startDate = DateTime(date.year, date.month, date.day, date.hour);
       case TimeScaleType.day:
-        return DateTime(now.year, now.month, now.day);
+        startDate = DateTime(date.year, date.month, date.day);
       case TimeScaleType.week:
-        return DateTime(now.year, now.month, now.day);
+        startDate = DateTime(date.year, date.month, date.day)
+            .subtract(const Duration(days: 7));
       case TimeScaleType.month:
-        return DateTime(now.year, now.month);
+        startDate = DateTime(date.year, date.month);
       case TimeScaleType.year:
-        return DateTime(now.year);
+        startDate = DateTime(date.year);
     }
+    return startDate == date ? startDate.subtract(durationScale) : startDate;
   }
 }

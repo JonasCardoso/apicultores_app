@@ -32,10 +32,8 @@ class GraphDateInformationWidget extends StatelessWidget {
       ? 'hoje ${_formatDate(startDate)}'
       : _formatDate(startDate, complete: true);
 
-  String _formatEndDate(DateTime startDate, DateTime? endDate) {
-    if (endDate == null) {
-      return _formatNowTime();
-    } else if (startDate.day != endDate.day) {
+  String _formatEndDate(DateTime startDate, DateTime endDate) {
+    if (startDate.day != endDate.day) {
       return _isToday(endDate)
           ? 'hoje ${_formatDate(
               endDate,

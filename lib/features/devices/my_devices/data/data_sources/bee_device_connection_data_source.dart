@@ -74,13 +74,14 @@ class BeeDeviceConnectionDataSource {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     ).timeout(
-      const Duration(seconds: 1),
+      const Duration(seconds: 3),
       onTimeout: () {
         return http.Response(
             'Error', 408); // Request Timeout response status code
       },
     );
     if (response.statusCode != 200) {
+      print('Device not found because of ${response.statusCode}');
       throw const BeeDeviceConnectionGetDataException();
     }
     return BeeDeviceDTO.fromJson(jsonDecode(response.body));

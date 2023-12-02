@@ -1,3 +1,3 @@
 part of 'app_bar.dart';
 
-const _appBarHeight = 164.0;
+const _appBarHeight = 138.0;

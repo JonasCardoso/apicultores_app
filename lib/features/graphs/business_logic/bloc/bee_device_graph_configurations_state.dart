@@ -14,7 +14,8 @@ final class BeeDeviceGraphConfigurationsSuccess
     extends BeeDeviceGraphConfigurationsState {
   final List<SensorType> visibleSensorsData;
   final DateTime startDate;
-  final DateTime? endDate;
+  final DateTime endDate;
+  final DateTime lastDateInGraphData;
   final TimeScaleType timeScaleType;
 
   const BeeDeviceGraphConfigurationsSuccess({
@@ -22,19 +23,21 @@ final class BeeDeviceGraphConfigurationsSuccess
     required this.startDate,
     required this.endDate,
     required this.timeScaleType,
+    required this.lastDateInGraphData,
   });
 
-  BeeDeviceGraphConfigurationsSuccess copyWith({
-    List<SensorType>? visibleSensorsData,
-    DateTime? startDate,
-    DateTime? Function()? setEndDate,
-    TimeScaleType? timeScaleType,
-  }) {
+  BeeDeviceGraphConfigurationsSuccess copyWith(
+      {List<SensorType>? visibleSensorsData,
+      DateTime? startDate,
+      DateTime? endDate,
+      TimeScaleType? timeScaleType,
+      DateTime? lastDateInGraphData}) {
     return BeeDeviceGraphConfigurationsSuccess(
       visibleSensorsData: visibleSensorsData ?? this.visibleSensorsData,
       startDate: startDate ?? this.startDate,
-      endDate: setEndDate != null ? setEndDate() : endDate,
+      endDate: endDate ?? this.endDate,
       timeScaleType: timeScaleType ?? this.timeScaleType,
+      lastDateInGraphData: lastDateInGraphData ?? this.lastDateInGraphData,
     );
   }
 
@@ -44,5 +47,6 @@ final class BeeDeviceGraphConfigurationsSuccess
         startDate,
         endDate,
         timeScaleType,
+        lastDateInGraphData,
       ];
 }

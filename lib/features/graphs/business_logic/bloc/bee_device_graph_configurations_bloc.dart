@@ -25,8 +25,9 @@ class BeeDeviceGraphConfigurationsBloc extends Bloc<
       BeeDeviceGraphConfigurationsSuccess(
         visibleSensorsData: SensorType.values.toList(),
         timeScaleType: TimeScaleType.hour,
-        startDate: TimeScaleType.hour.startDuration(DateTime.now()),
-        endDate: null,
+        startDate: TimeScaleType.hour.startDuration(event.lastDateInTimestamp),
+        endDate: event.lastDateInTimestamp,
+        lastDateInGraphData: event.lastDateInTimestamp,
       ),
     );
   }
@@ -61,8 +62,9 @@ class BeeDeviceGraphConfigurationsBloc extends Bloc<
       emit(
         currentState.copyWith(
           timeScaleType: event.timeScale,
-          startDate: event.timeScale.startDuration(DateTime.now()),
-          setEndDate: () => null,
+          startDate:
+              event.timeScale.startDuration(currentState.lastDateInGraphData),
+          endDate: currentState.lastDateInGraphData,
         ),
       );
     }
@@ -75,27 +77,23 @@ class BeeDeviceGraphConfigurationsBloc extends Bloc<
     final currentState = state;
     if (currentState is BeeDeviceGraphConfigurationsSuccess) {
       if (event.plus) {
-        DateTime? newEndDate = (currentState.endDate ?? DateTime.now())
-            .add(currentState.timeScaleType.durationScale);
-        if (newEndDate.isAfter(DateTime.now())) {
-          newEndDate = null;
+        var newEndDate =
+            currentState.endDate.add(currentState.timeScaleType.durationScale);
+        if (newEndDate.isAfter(currentState.lastDateInGraphData)) {
+          newEndDate = currentState.lastDateInGraphData;
         }
         final newStartDate = currentState.startDate
             .add(currentState.timeScaleType.durationScale);
         emit(
-          currentState.copyWith(
-              setEndDate: () => newEndDate, startDate: newStartDate),
+          currentState.copyWith(endDate: newEndDate, startDate: newStartDate),
         );
       } else {
-        final currentEndDate = currentState.endDate;
-        DateTime? newEndDate = currentEndDate == null
-            ? currentState.timeScaleType.startDuration(DateTime.now())
-            : currentEndDate.subtract(currentState.timeScaleType.durationScale);
+        DateTime? newEndDate = currentState.startDate;
         final newStartDate = currentState.startDate
             .subtract(currentState.timeScaleType.durationScale);
         emit(
           currentState.copyWith(
-            setEndDate: () => newEndDate,
+            endDate: newEndDate,
             startDate: newStartDate,
           ),
         );

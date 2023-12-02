@@ -24,7 +24,7 @@ class BeeDeviceGraphDataBuilder {
           data: dataBySelectedPeriod(sensor).reversed.toList(),
           sensorType: sensor,
           startDate: configurations.startDate,
-          endDate: configurations.endDate ?? DateTime.now(),
+          endDate: configurations.endDate,
           timeScale: configurations.timeScaleType,
         ),
     ];
@@ -61,7 +61,6 @@ class BeeDeviceGraphDataBuilder {
 
   bool _shouldIncludeTimestamp({required DateTime? timestamp}) {
     return (timestamp?.isAfter(configurations.startDate) ?? false) &&
-        (timestamp?.isBefore(configurations.endDate ?? DateTime.now()) ??
-            false);
+        (timestamp?.isBefore(configurations.endDate) ?? false);
   }
 }

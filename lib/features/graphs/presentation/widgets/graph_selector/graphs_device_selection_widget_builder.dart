@@ -1,5 +1,6 @@
 import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/local_bee_device_entity.dart';
 import 'package:apicultores_app/features/graphs/business_logic/bloc/bee_device_graph_bloc.dart';
+import 'package:apicultores_app/features/graphs/business_logic/bloc/bee_device_graph_configurations_bloc.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/graph_selector/graphs_device_selection.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/graph_selector/graphs_device_selection_failure_widget.dart';
 import 'package:design_system/design_system.dart';
@@ -45,6 +46,11 @@ class GraphsDeviceSelectionWidgetBuilder extends StatelessWidget {
         BlocConsumer<BeeDeviceGraphBloc, BeeDeviceGraphState>(
             listener: (context, state) {
               if (state is BeeDeviceGraphSuccess) {
+                context.read<BeeDeviceGraphConfigurationsBloc>().add(
+                    BeeDeviceGraphConfigurationsFetched(
+                        lastDateInTimestamp:
+                            state.data.timestamps.first ?? DateTime.now()));
+
                 _scrollToTop();
               }
             },

@@ -77,7 +77,7 @@ class Strings {
   static const String connectDeviceToInternetFailureTitle = "Algo deu errado";
   static const String connectDeviceToInternetFailureDescription =
       "Não foi possível conectar seu dispositivo à internet. Você pode estar nestes seguintes casos:\n"
-      "1. A senha do Wi-Fi pode estar incorreta"
+      "1. A senha do Wi-Fi pode estar incorreta\n"
       "2. Você pode estar tentando conectar o dispositivo a uma rede 5G. Tente na sua rede normal (2.4G)";
   static const String tryAgain = "Tentar novamente";
 
@@ -139,7 +139,7 @@ class Strings {
   static const saveDeviceSuccessButtonLabel = "Começar a monitorar";
 
   static const devicesSearchingSpinner =
-      "Procurando dispositivos conectados à sua internet...";
+      "Procurando dispositivos conectados à sua internet... Isso pode levar de 1 a 3 minutos";
   static const addNewDeviceButton = "Adicionar novo dispositivo";
   static const devicesSuccessDescription =
       "Estes são os dispositivos conectados a sua rede Wi-fi";

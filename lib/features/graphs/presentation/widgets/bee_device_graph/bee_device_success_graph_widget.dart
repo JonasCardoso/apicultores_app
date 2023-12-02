@@ -2,6 +2,7 @@ import 'package:apicultores_app/features/graphs/business_logic/bloc/bee_device_g
 import 'package:apicultores_app/features/graphs/business_logic/entities/graph_data_entity.dart';
 import 'package:apicultores_app/features/graphs/business_logic/entities/graph_properties_entity.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/bee_device_graph_data_builder.dart';
+import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/graph_actions/graph_actions_area.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/graph_details/graph_details_widget.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/graph_information/bee_device_graph_information_widget.dart';
 import 'package:apicultores_app/features/graphs/presentation/widgets/bee_device_graph/visible_sensors/bee_device_graph_visible_sensors_widget.dart';
@@ -71,6 +72,10 @@ class BeeDeviceSuccessGraphWidget extends StatelessWidget {
                 graphBuilder: builder,
               ),
             ),
+            const SizedBox(
+              height: Spacing.medium,
+            ),
+            GraphActionsArea(graphData: graphData),
           ],
         );
       }

@@ -53,10 +53,7 @@ class MyDevicesBlocRepository {
           ),
         ),
       ),
-      beeDeviceGraphConfigurationsBloc: BeeDeviceGraphConfigurationsBloc()
-        ..add(
-          const BeeDeviceGraphConfigurationsFetched(),
-        ),
+      beeDeviceGraphConfigurationsBloc: BeeDeviceGraphConfigurationsBloc(),
     );
     return _instance!;
   }
