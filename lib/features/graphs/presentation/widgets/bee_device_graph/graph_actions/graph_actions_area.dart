@@ -1,10 +1,9 @@
 import 'dart:io';
 
+import 'package:apicultores_app/features/graphs/business_logic/bloc/export_graph_in_csv_bloc.dart';
 import 'package:apicultores_app/features/graphs/business_logic/entities/graph_data_entity.dart';
 import 'package:design_system/design_system.dart';
-import 'package:csv/csv.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GraphActionsArea extends StatelessWidget {
   const GraphActionsArea({
@@ -15,39 +14,44 @@ class GraphActionsArea extends StatelessWidget {
   final GraphDataEntity graphData;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: Spacing.large,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Opções',
-              style: MyTypography.h3,
-            ),
-            ActionsList(items: [
-              ActionsListItem(
-                  label: 'Exportar em CSV',
-                  onPressed: () async {
-                    final csv = const ListToCsvConverter()
-                        .convert(graphData.transformDataInCSV());
-                    final String directory =
-                        (await getApplicationSupportDirectory()).path;
-                    final path = "$directory/csv-${DateTime.now()}.csv";
-                    print(path);
-                    final File file = File(path);
-                    await file.writeAsString(csv);
-                    final result = await Share.shareXFiles([XFile(path)]);
-
-                    if (result.status == ShareResultStatus.success) {
-                      print('Thank you for sharing the picture!');
-                    }
-                  },
-                  leftIcon: Icons.share,
-                  rightIcon: Icons.chevron_right),
-            ])
-          ],
-        ));
+    return BlocListener<ExportGraphInCsvBloc, ExportGraphInCsvState>(
+      listener: (context, state) {
+        if (state is ExportGraphInCsvSuccess) {
+          const SnackBar(
+                  message: 'Arquivo exportado com sucesso!',
+                  variant: SnackBarVariant.success)
+              .show(context);
+        } else if (state is ExportGraphInCsvFailure) {
+          const SnackBar(
+                  message: 'Algo deu errado com a exportação',
+                  variant: SnackBarVariant.error)
+              .show(context);
+        }
+      },
+      child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: Spacing.large,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Opções',
+                style: MyTypography.h3,
+              ),
+              ActionsList(items: [
+                ActionsListItem(
+                    label: 'Exportar em CSV',
+                    onPressed: () {
+                      context.read<ExportGraphInCsvBloc>().add(
+                            ExportGrapthInCsvExported(graphData),
+                          );
+                    },
+                    leftIcon: Icons.share,
+                    rightIcon: Icons.chevron_right),
+              ])
+            ],
+          )),
+    );
   }
 }
