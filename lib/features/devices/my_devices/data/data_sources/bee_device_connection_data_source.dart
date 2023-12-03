@@ -29,10 +29,17 @@ class BeeDeviceConnectionDataSource {
     final dateQuery = propertiesDTO.period.endDate != null
         ? 'start=${propertiesDTO.period.startDate.millisecondsSinceEpoch}?end=${propertiesDTO.period.endDate?.microsecondsSinceEpoch}'
         : 'start=${propertiesDTO.period.startDate.millisecondsSinceEpoch}';
+    final url = 'http://${propertiesDTO.device.deviceIp}/data?$dateQuery';
     return http.get(
-      Uri.parse('http://${propertiesDTO.device.deviceIp}/data?$dateQuery'),
+      Uri.parse(url),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+      },
+    ).timeout(
+      const Duration(seconds: 5),
+      onTimeout: () {
+        return http.Response(
+            'Error', 408); // Request Timeout response status code
       },
     ).then((value) {
       if (value.statusCode != 200) {

@@ -49,7 +49,7 @@ class GraphsDeviceSelectionWidgetBuilder extends StatelessWidget {
                 context.read<BeeDeviceGraphConfigurationsBloc>().add(
                     BeeDeviceGraphConfigurationsFetched(
                         lastDateInTimestamp:
-                            state.data.timestamps.first ?? DateTime.now()));
+                            state.data.timestamps.last ?? DateTime.now()));
 
                 _scrollToTop();
               }

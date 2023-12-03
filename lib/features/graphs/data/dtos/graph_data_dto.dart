@@ -7,32 +7,33 @@ part 'graph_data_dto.g.dart';
 class GraphDataDTO extends Equatable {
   final List<String?> timestamps;
 
-  @JsonKey(name: 'internal_sound_readings')
-  final List<String?> internalSoundReadings;
+  @JsonKey(name: 'internal_sound')
+  final List<String?> internalSound;
 
-  @JsonKey(name: 'external_sound_readings')
-  final List<String?> externalSoundReadings;
+  @JsonKey(name: 'external_sound')
+  final List<String?> externalSound;
 
-  @JsonKey(name: 'proximity_readings')
-  final List<String?> proximityReadings;
+  final List<String?> proximity;
 
   const GraphDataDTO({
     required this.timestamps,
-    required this.internalSoundReadings,
-    required this.externalSoundReadings,
-    required this.proximityReadings,
+    required this.internalSound,
+    required this.externalSound,
+    required this.proximity,
   });
 
-  factory GraphDataDTO.fromJson(Map<String, dynamic> json) =>
-      _$GraphDataDTOFromJson(json);
+  factory GraphDataDTO.fromJson(Map<String, dynamic> json) {
+    print(json);
+    return _$GraphDataDTOFromJson(json);
+  }
 
   Map<String, dynamic> toJson() => _$GraphDataDTOToJson(this);
 
   @override
   List<Object?> get props => [
         timestamps,
-        internalSoundReadings,
-        externalSoundReadings,
-        proximityReadings,
+        internalSound,
+        externalSound,
+        proximity,
       ];
 }

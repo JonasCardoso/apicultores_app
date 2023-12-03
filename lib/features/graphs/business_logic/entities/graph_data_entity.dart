@@ -22,9 +22,9 @@ class GraphDataEntity extends Equatable {
               : null;
         }).toList(),
         data: {
-          SensorType.externalSound: dto.externalSoundReadings.convertToDouble(),
-          SensorType.internalSound: dto.internalSoundReadings.convertToDouble(),
-          SensorType.proximity: dto.proximityReadings.convertToDouble(),
+          SensorType.externalSound: dto.externalSound.convertToDouble(),
+          SensorType.internalSound: dto.internalSound.convertToDouble(),
+          SensorType.proximity: dto.proximity.convertToDouble(),
         });
   }
 

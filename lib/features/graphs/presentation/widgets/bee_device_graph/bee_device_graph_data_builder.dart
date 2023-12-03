@@ -21,7 +21,7 @@ class BeeDeviceGraphDataBuilder {
     return <LineSeries<SensorData, String>>[
       for (final sensor in configurations.visibleSensorsData)
         SensorLineSeries(
-          data: dataBySelectedPeriod(sensor).reversed.toList(),
+          data: dataBySelectedPeriod(sensor).toList(),
           sensorType: sensor,
           startDate: configurations.startDate,
           endDate: configurations.endDate,
@@ -44,6 +44,8 @@ class BeeDeviceGraphDataBuilder {
 
   List<SensorData> dataBySelectedPeriod(SensorType sensor) {
     final data = <SensorData>[];
+    print(
+        'timestamp length: ${graphData.timestamps.length} proximity length: ${graphData.data[sensor]?.length} internal sounds length: ${graphData.data[sensor]?.length} external sounds length: ${graphData.data[sensor]?.length}');
     for (var i = 0; i < graphData.timestamps.length; i++) {
       final timestamp = graphData.timestamps[i];
       if (_shouldIncludeTimestamp(timestamp: timestamp)) {
