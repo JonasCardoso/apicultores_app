@@ -46,6 +46,7 @@ class ConnectDeviceToInternetBloc
     ConnectDeviceToInternetConnected event,
     Emitter<ConnectDeviceToInternetState> emit,
   ) async {
+    emit(const ConnectDeviceToInternetBluetoothAnswerSuccess());
     final possibleRegisteredDevice =
         await _useCase.getPossibleRegisteredDevice(event.deviceIp);
     emit(
@@ -54,8 +55,6 @@ class ConnectDeviceToInternetBloc
         possibleRegisteredDevice: possibleRegisteredDevice,
       ),
     );
-
-    await _useCase.disconnectBluetoothOfDevice();
   }
 
   void _onConnectionToWiFiFailed(

@@ -3,6 +3,7 @@ import 'package:apicultores_app/features/register_device/connect_device_to_inter
 import 'package:apicultores_app/features/register_device/connect_device_to_internet/presentation/widgets/states/connect_device_to_internet_loading_widget.dart';
 import 'package:apicultores_app/features/register_device/connect_device_to_internet/presentation/widgets/states/connect_device_to_internet_success_widget.dart';
 import 'package:apicultores_app/features/register_device/connect_device_to_internet/presentation/widgets/states/connect_device_to_internet_wi_fi_available_widget.dart';
+import 'package:apicultores_app/features/register_device/connect_device_to_internet/presentation/widgets/states/connect_to_device_bluetooth_success_widget.dart';
 import 'package:apicultores_app/features/register_device/shared/devices_navigation_delegate.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +21,6 @@ class ConnectDeviceToInternetScreenBuilder extends StatelessWidget {
       listener: (context, state) async {
         if (state is ConnectDeviceToInternetSuccess) {
           if (state.possibleRegisteredDevice == null) {
-            await Future.delayed(const Duration(seconds: 2));
             navigationDelegate.navigateToSaveDevice(state.deviceIp);
           }
         }
@@ -40,6 +40,8 @@ class ConnectDeviceToInternetScreenBuilder extends StatelessWidget {
           const ConnectDeviceToInternetLoadingWidget(),
         ConnectDeviceToInternetFailure _ =>
           const ConnectDeviceToInternetFailureWidget(),
+        ConnectDeviceToInternetBluetoothAnswerSuccess _ =>
+          const ConnectToDeviceBluetoothSuccessWidget(),
       },
     );
   }

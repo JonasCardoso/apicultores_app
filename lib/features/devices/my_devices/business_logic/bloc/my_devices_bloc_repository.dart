@@ -11,6 +11,7 @@ import 'package:apicultores_app/features/graphs/business_logic/use_cases/bee_dev
 import 'package:apicultores_app/features/register_device/wi_fi_connection/data/data_sources/connectivity_data_source.dart';
 import 'package:apicultores_app/features/register_device/wi_fi_connection/data/data_sources/network_info_data_source.dart';
 import 'package:apicultores_app/features/register_device/wi_fi_connection/data/repositories/available_wi_fi_repository.dart';
+import 'package:apicultores_app/shared/adapter/data_chunks_collector.dart';
 
 class MyDevicesBlocRepository {
   final MyDevicesBloc myDevicesBloc;
@@ -26,7 +27,8 @@ class MyDevicesBlocRepository {
   static MyDevicesBlocRepository? _instance;
   factory MyDevicesBlocRepository() {
     final beeDeviceRepository = BeeDeviceRepository(
-      beeDeviceConnectionDataSource: BeeDeviceConnectionDataSource(),
+      beeDeviceConnectionDataSource:
+          BeeDeviceConnectionDataSource(DataChunksCollector()),
       beeDeviceLocalDataSource: BeeDeviceLocalDataSource(),
     );
     final availableWiFiRepository = AvailableWiFiRepository(
@@ -48,7 +50,9 @@ class MyDevicesBlocRepository {
       beeDeviceGraphBloc: BeeDeviceGraphBloc(
         BeeDeviceGraphUseCase(
           BeeDeviceRepository(
-            beeDeviceConnectionDataSource: BeeDeviceConnectionDataSource(),
+            beeDeviceConnectionDataSource: BeeDeviceConnectionDataSource(
+              DataChunksCollector(),
+            ),
             beeDeviceLocalDataSource: BeeDeviceLocalDataSource(),
           ),
         ),

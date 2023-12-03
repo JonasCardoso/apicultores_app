@@ -1,14 +1,22 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:apicultores_app/features/devices/my_devices/data/dtos/bee_device_dto.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/dtos/bee_device_with_ip_dto.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/exceptions/bee_device_connection_exceptions.dart';
+import 'package:apicultores_app/features/graphs/business_logic/use_cases/export_graph_in_csv_use_case.dart';
 import 'package:apicultores_app/features/graphs/data/dtos/graph_data_dto.dart';
 import 'package:apicultores_app/features/graphs/data/dtos/graph_properties_dto.dart';
+import 'package:apicultores_app/shared/adapter/data_chunks_collector.dart';
 import 'package:apicultores_app/shared/adapter/network_discover.dart';
+import 'package:csv/csv.dart';
 import 'package:http/http.dart' as http;
 
 class BeeDeviceConnectionDataSource {
+  final DataChunksCollector _dataChunksCollector;
+
+  BeeDeviceConnectionDataSource(this._dataChunksCollector);
   Future<void> sendBeeDeviceData({
     required BeeDeviceDTO beeDeviceDTO,
     required String deviceIp,
@@ -25,28 +33,27 @@ class BeeDeviceConnectionDataSource {
     }
   }
 
-  Future<GraphDataDTO> getGraphData(GraphPropertiesDTO propertiesDTO) {
+  Future<GraphDataDTO> getGraphData(GraphPropertiesDTO propertiesDTO) async {
     final dateQuery = propertiesDTO.period.endDate != null
         ? 'start=${propertiesDTO.period.startDate.millisecondsSinceEpoch}?end=${propertiesDTO.period.endDate?.microsecondsSinceEpoch}'
         : 'start=${propertiesDTO.period.startDate.millisecondsSinceEpoch}';
-    final url = 'http://${propertiesDTO.device.deviceIp}/data?$dateQuery';
-    return http.get(
-      Uri.parse(url),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    ).timeout(
-      const Duration(seconds: 5),
-      onTimeout: () {
-        return http.Response(
-            'Error', 408); // Request Timeout response status code
-      },
-    ).then((value) {
-      if (value.statusCode != 200) {
-        throw const BeeDeviceConnectionGetDataException();
-      }
-      return GraphDataDTO.fromJson(jsonDecode(value.body));
-    });
+    try {
+      final graphCsv = await _dataChunksCollector.collectDataChunks(
+          ip: propertiesDTO.device.deviceIp, query: 'data?$dateQuery');
+      final csvList = graphCsv
+          .split('\n')
+          .where(
+            (element) => element.isNotEmpty,
+          )
+          .map((row) => row.split(','))
+          .toList();
+      final graphDataDTO = GraphDataDTO.fromCsv(csvList);
+      return graphDataDTO;
+    } catch (e, stk) {
+      print(e);
+      print(stk);
+      throw const BeeDeviceConnectionGetDataException();
+    }
   }
 
   Stream<List<BeeDeviceWithIpDTO>> findDevicesWithIp(

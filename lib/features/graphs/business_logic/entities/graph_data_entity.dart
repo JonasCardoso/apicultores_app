@@ -24,6 +24,16 @@ class GraphDataEntity extends Equatable {
         data: {
           SensorType.externalSound: dto.externalSound.convertToDouble(),
           SensorType.internalSound: dto.internalSound.convertToDouble(),
+          SensorType.externalTemperature:
+              dto.externalTemperature.convertToDouble(),
+          SensorType.internalTemperature:
+              dto.internalTemperature.convertToDouble(),
+          SensorType.externalHumidity: dto.externalHumidity.convertToDouble(),
+          SensorType.internalHumidity: dto.internalHumidity.convertToDouble(),
+          SensorType.externalPressure: dto.externalPressure.convertToDouble(),
+          SensorType.internalPressure: dto.internalPressure.convertToDouble(),
+          SensorType.externalGas: dto.externalGas.convertToDouble(),
+          SensorType.internalGas: dto.internalGas.convertToDouble(),
           SensorType.proximity: dto.proximity.convertToDouble(),
         });
   }
@@ -33,14 +43,9 @@ class GraphDataEntity extends Equatable {
     csvData.add(['timestamp', ...SensorType.values.map((e) => e.name)]);
     for (var i = 0; i < timestamps.length; i++) {
       final timestamp = timestamps[i];
-      final proximity = data[SensorType.proximity]?[i];
-      final internalSound = data[SensorType.internalSound]?[i];
-      final externalSound = data[SensorType.externalSound]?[i];
       csvData.add([
         timestamp?.millisecondsSinceEpoch,
-        proximity,
-        internalSound,
-        externalSound,
+        ...SensorType.values.map((type) => data[type]?[i])
       ]);
     }
     return csvData;

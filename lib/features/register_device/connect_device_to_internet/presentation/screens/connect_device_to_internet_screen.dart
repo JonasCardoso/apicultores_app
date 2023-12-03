@@ -34,15 +34,12 @@ class ConnectDeviceToInternetScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: Spacing.large,
               ),
-              child: ConnectDeviceToInternetBluetoothGuard(
-                deviceEntity: deviceEntity,
-                child: ConnectDeviceToInternetWiFiGuard(
-                  buildChild: (wiFiName) => ConnectDeviceToInternetBlocProvider(
-                    wiFiName: wiFiName,
-                    device: deviceEntity,
-                    child: const ConnectDeviceToInternetScreenBuilder(
-                      navigationDelegate: DevicesNavigationDelegate(),
-                    ),
+              child: ConnectDeviceToInternetWiFiGuard(
+                buildChild: (wiFiName) => ConnectDeviceToInternetBlocProvider(
+                  wiFiName: wiFiName,
+                  device: deviceEntity,
+                  child: const ConnectDeviceToInternetScreenBuilder(
+                    navigationDelegate: DevicesNavigationDelegate(),
                   ),
                 ),
               ),

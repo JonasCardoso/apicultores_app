@@ -4,6 +4,7 @@ import 'package:apicultores_app/features/devices/my_devices/business_logic/bloc/
 import 'package:apicultores_app/features/devices/my_devices/data/data_sources/bee_device_connection_data_source.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/data_sources/bee_device_local_data_source.dart';
 import 'package:apicultores_app/features/devices/my_devices/data/repositories/bee_device_repository.dart';
+import 'package:apicultores_app/shared/adapter/data_chunks_collector.dart';
 
 class AppCompositionRoot {
   MyDevicesBloc makeMyDevicesBloc() {
@@ -16,7 +17,9 @@ class AppCompositionRoot {
 
   BeeDeviceRepository makeBeeDeviceRepository() {
     return BeeDeviceRepository(
-      beeDeviceConnectionDataSource: BeeDeviceConnectionDataSource(),
+      beeDeviceConnectionDataSource: BeeDeviceConnectionDataSource(
+        DataChunksCollector(),
+      ),
       beeDeviceLocalDataSource: BeeDeviceLocalDataSource(),
     );
   }

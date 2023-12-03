@@ -23,7 +23,7 @@ class SensorData extends Equatable {
   }
 
   String valueToString() {
-    return '${value ?? ''} ${sensorType.unit}';
+    return '${value?.toStringAsFixed(2) ?? ''} ${sensorType.unit}';
   }
 
   String timestampString({TimeScaleType? timeScale}) {

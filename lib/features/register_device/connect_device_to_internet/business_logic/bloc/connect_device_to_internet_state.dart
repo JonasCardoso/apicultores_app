@@ -38,5 +38,10 @@ final class ConnectDeviceToInternetSuccess
       ];
 }
 
+final class ConnectDeviceToInternetBluetoothAnswerSuccess
+    extends ConnectDeviceToInternetState {
+  const ConnectDeviceToInternetBluetoothAnswerSuccess();
+}
+
 final class ConnectDeviceToInternetFailure
     extends ConnectDeviceToInternetState {}

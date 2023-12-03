@@ -26,7 +26,7 @@ class ConnectDeviceToInternetUseCase {
           );
 
   Future<void> disconnectBluetoothOfDevice() async {
-    await _device.write("disconnect");
+    await _device.disconnect();
   }
 
   Future<BeeDeviceEntity?> getPossibleRegisteredDevice(String deviceIp) async {
