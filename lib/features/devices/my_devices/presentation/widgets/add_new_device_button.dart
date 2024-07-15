@@ -1,7 +1,6 @@
 import 'package:apicultores_app/features/register_device/shared/devices_navigation_delegate.dart';
 import 'package:apicultores_app/shared/strings.dart';
 import 'package:design_system/design_system.dart';
-import 'package:flutter/widgets.dart';
 
 class AddNewDeviceButton extends StatelessWidget {
   const AddNewDeviceButton({

@@ -45,7 +45,7 @@ class BeeDeviceSuccessGraphWidget extends StatelessWidget {
                   SfCartesianChart(
                     series: builder.buildSeries(),
                     trackballBehavior: builder.buildTrackballBehavior(),
-                    primaryXAxis: CategoryAxis(),
+                    primaryXAxis: const CategoryAxis(),
                   ),
                   Padding(
                     padding:
@@ -79,7 +79,7 @@ class BeeDeviceSuccessGraphWidget extends StatelessWidget {
           ],
         );
       }
-      return SfCartesianChart();
+      return const SfCartesianChart();
     });
   }
 }

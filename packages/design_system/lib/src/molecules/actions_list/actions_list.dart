@@ -1,5 +1,4 @@
 import 'package:design_system/design_system.dart';
-import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 class ActionsList extends StatelessWidget {

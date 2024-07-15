@@ -4,7 +4,7 @@ import 'package:apicultores_app/features/graphs/business_logic/entities/sensor_t
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class SensorLineSeries extends LineSeries<SensorData, String> {
-  SensorLineSeries({
+  SensorLineSeries({super.key, 
     required List<SensorData> data,
     required SensorType sensorType,
     required DateTime startDate,

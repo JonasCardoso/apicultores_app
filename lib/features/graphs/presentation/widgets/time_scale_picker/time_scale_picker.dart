@@ -1,7 +1,6 @@
 import 'package:apicultores_app/features/graphs/business_logic/bloc/bee_device_graph_configurations_bloc.dart';
 import 'package:apicultores_app/features/graphs/business_logic/entities/time_scale_type.dart';
 import 'package:design_system/design_system.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TimeScalePicker extends StatefulWidget {

@@ -1,8 +1,6 @@
-import 'package:apicultores_app/features/devices/my_devices/business_logic/bloc/my_devices_bloc.dart';
 import 'package:apicultores_app/features/devices/my_devices/business_logic/entities/bee_device_entity.dart';
 import 'package:apicultores_app/features/devices/my_devices/presentation/widgets/internet_devices/internet_device_item_card.dart';
 import 'package:design_system/design_system.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DevicesListWidget extends StatelessWidget {
   const DevicesListWidget({

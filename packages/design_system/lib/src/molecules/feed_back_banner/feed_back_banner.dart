@@ -1,7 +1,4 @@
 import 'package:design_system/design_system.dart';
-import 'package:design_system/src/atoms/button/button.dart';
-import 'package:design_system/src/theme/theme.dart';
-import 'package:flutter/material.dart';
 
 class FeedBackBanner extends StatelessWidget {
   const FeedBackBanner({

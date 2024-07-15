@@ -7,9 +7,9 @@ class BluetoothDeviceEntity extends Equatable {
   final ScanResult _scanResult;
   const BluetoothDeviceEntity(this._scanResult);
 
-  String get name => _scanResult.device.localName;
+  String get name => _scanResult.device.platformName;
   String get remoteId => _scanResult.device.remoteId.str;
-  String get type => _scanResult.device.type.name;
+  String get type => _scanResult.device.name;
 
   Future<void> Function({Duration timeout, bool autoConnect}) get connect =>
       _scanResult.device.connect;

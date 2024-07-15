@@ -27,20 +27,20 @@ class Button extends StatelessWidget {
         return ElevatedButton(
           onPressed: onPressed,
           style: ButtonStyle(
-            padding: MaterialStateProperty.all(
+            padding: WidgetStateProperty.all(
               const EdgeInsets.symmetric(
                 horizontal: Spacing.large,
                 vertical: Spacing.medium,
               ),
             ),
-            backgroundColor: MaterialStateProperty.all(
+            backgroundColor: WidgetStateProperty.all(
               variant.backgroundColor(disabled),
             ),
-            minimumSize: MaterialStateProperty.all(
+            minimumSize: WidgetStateProperty.all(
               Size(fill ? double.infinity : 0, 0),
             ),
-            elevation: MaterialStateProperty.all(0),
-            shape: MaterialStateProperty.all(
+            elevation: WidgetStateProperty.all(0),
+            shape: WidgetStateProperty.all(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),
               ),
