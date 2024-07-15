@@ -1,3 +1,4 @@
+import 'package:apicultores_app/features/dataFirebase/presentation/screens/datafb_screen.dart';
 import 'package:apicultores_app/features/devices/my_devices/presentation/screens/devices_screen.dart';
 import 'package:apicultores_app/features/graphs/presentation/screens/graphs_screen.dart';
 import 'package:apicultores_app/home/business_logic/bloc/bottom_navigation_bloc.dart';
@@ -18,6 +19,10 @@ class HomeTabViewWidget extends StatelessWidget {
         case BottomNavigationItemType.data:
           return const Center(
             child: GraphsScreen(),
+          );
+        case BottomNavigationItemType.dataFb:
+          return const Center(
+            child: DatafbScreen(),
           );
       }
     });

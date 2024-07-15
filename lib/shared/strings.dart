@@ -4,6 +4,7 @@ class Strings {
   static const String bottomNavigationItemDevices = "Dispositivos";
   static const String bottomNavigationItemData = "Dados";
   static const String bottomNavigationItemStory = "Histórico";
+  static const String bottomNavigationItemDataFirebase = "Dados Firebase";
 
   static const String errorFeedBackTitle = "Algo deu errado...";
   static const String errorFeedBackDescription =

@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "678019322204",
+    "firebase_url": "https://bee-rasp-default-rtdb.firebaseio.com",
+    "project_id": "bee-rasp",
+    "storage_bucket": "bee-rasp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678019322204:android:48c556a75c7768cdff7199",
+        "android_client_info": {
+          "package_name": "com.example.apicultores_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXF0sXdc7VRq_ZMnjIYYK-OtqwTEEOtVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678019322204:android:22e2e7e6f634cf01ff7199",
+        "android_client_info": {
+          "package_name": "com.example.meuapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXF0sXdc7VRq_ZMnjIYYK-OtqwTEEOtVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

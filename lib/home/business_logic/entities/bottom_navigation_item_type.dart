@@ -1,7 +1,7 @@
 import 'package:apicultores_app/shared/strings.dart';
 import 'package:flutter/material.dart';
 
-enum BottomNavigationItemType { devices, data }
+enum BottomNavigationItemType { devices, data, dataFb }
 
 extension BottomNavigationItemInformation on BottomNavigationItemType {
   IconData get icon {
@@ -10,6 +10,8 @@ extension BottomNavigationItemInformation on BottomNavigationItemType {
         return Icons.devices;
       case BottomNavigationItemType.data:
         return Icons.data_usage;
+      case BottomNavigationItemType.dataFb:
+        return Icons.dataset_linked;
     }
   }
 
@@ -19,6 +21,8 @@ extension BottomNavigationItemInformation on BottomNavigationItemType {
         return Strings.bottomNavigationItemDevices;
       case BottomNavigationItemType.data:
         return Strings.bottomNavigationItemData;
+      case BottomNavigationItemType.dataFb:
+        return Strings.bottomNavigationItemDataFirebase;
     }
   }
 }
